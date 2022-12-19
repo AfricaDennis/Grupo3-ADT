@@ -1,7 +1,12 @@
 package com.reto2.grupo3.model;
 
-public class Topic {
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+public class Topic {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String name;
     Integer idTeacher;
