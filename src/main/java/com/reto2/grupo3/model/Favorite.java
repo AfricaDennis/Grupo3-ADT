@@ -11,7 +11,7 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_teacher", foreignKey=@ForeignKey(name = "Fk_id_teacher"))
+    @JoinColumn(name = "id_teacher", foreignKey=@ForeignKey(name = "fk_teachers_favorites"))
     @JsonManagedReference
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Teacher teacher;
@@ -20,30 +20,30 @@ public class Favorite {
     private Integer id_teacher;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_student", foreignKey=@ForeignKey(name = "Fk_id_student"))
+    @JoinColumn(name = "id_students", foreignKey=@ForeignKey(name = "fk_favorites_students"))
     @JsonManagedReference
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Student student;
 
-    @Column(name="id_student", insertable = false, updatable = false)
-    private Integer id_student;
+    @Column(name="id_students", insertable = false, updatable = false)
+    private Integer id_students;
 
     public Favorite() {
     }
 
-    public Favorite(Integer id, Teacher teacher, Integer id_teacher, Student student, Integer id_student) {
+    public Favorite(Integer id, Teacher teacher, Integer id_teacher, Student student, Integer id_students) {
         this.id = id;
         this.teacher = teacher;
         this.id_teacher = id_teacher;
         this.student = student;
-        this.id_student = id_student;
+        this.id_students = id_students;
     }
 
     public Favorite(Teacher teacher, Integer id_teacher, Student student, Integer id_student) {
         this.teacher = teacher;
         this.id_teacher = id_teacher;
         this.student = student;
-        this.id_student = id_student;
+        this.id_students = id_student;
     }
 
     public Integer getId() {
@@ -79,11 +79,11 @@ public class Favorite {
     }
 
     public Integer getId_student() {
-        return id_student;
+        return id_students;
     }
 
-    public void setId_student(Integer id_student) {
-        this.id_student = id_student;
+    public void setId_student(Integer id_students) {
+        this.id_students = id_students;
     }
 
     @Override
@@ -93,7 +93,7 @@ public class Favorite {
                 ", teacher=" + teacher +
                 ", id_teacher=" + id_teacher +
                 ", student=" + student +
-                ", id_student=" + id_student +
+                ", id_student=" + id_students +
                 '}';
     }
 }
