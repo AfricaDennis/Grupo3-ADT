@@ -1,4 +1,8 @@
 package com.reto2.grupo3.repository;
 
-public class TopicRepository {
+import com.reto2.grupo3.model.Topic;
+import org.springframework.data.repository.CrudRepository;
+
+public interface TopicRepository extends CrudRepository<Topic,Integer> {
+
 }
