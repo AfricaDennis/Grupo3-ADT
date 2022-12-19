@@ -1,10 +1,18 @@
 package com.reto2.grupo3.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name="topics")
 public class Topic {
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_teacher", foreignKey=@ForeignKey(name = "Fk_id_teacher"))
+    @JsonManagedReference
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Teacher teacher;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
