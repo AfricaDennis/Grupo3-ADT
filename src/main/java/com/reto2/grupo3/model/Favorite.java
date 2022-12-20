@@ -11,7 +11,7 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_teacher", referencedColumnName = "user_id", foreignKey=@ForeignKey(name = "fk_teacher_favorites"))
+    @JoinColumn(name = "id_teacher", foreignKey=@ForeignKey(name = "fk_teacher_favorites"))
     @JsonManagedReference
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Teacher teacher;
@@ -20,7 +20,7 @@ public class Favorite {
     private Integer id_teacher;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_students", referencedColumnName = "user_id", foreignKey=@ForeignKey(name = "fk_student_favorites"))
+    @JoinColumn(name = "id_students", foreignKey=@ForeignKey(name = "fk_student_favorites"))
     @JsonManagedReference
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Student student;

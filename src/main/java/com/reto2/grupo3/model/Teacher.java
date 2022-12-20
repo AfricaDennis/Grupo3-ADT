@@ -14,8 +14,9 @@ public class Teacher {
     private String shift;
     @Column(length = 5000)
     private String photo;
-    @JoinColumn(name = "id", foreignKey=@ForeignKey(name = "fk_user_teacher"))
-    @OneToOne(fetch = FetchType.LAZY)
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id ", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_teacher_id"))
     private User user;
 
     public Teacher() {
