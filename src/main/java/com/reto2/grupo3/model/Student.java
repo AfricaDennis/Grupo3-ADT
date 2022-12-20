@@ -9,8 +9,10 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "id", foreignKey=@ForeignKey(name = "fk_user"))
-    @OneToOne(fetch = FetchType.LAZY)
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_student_id"))
     private User user;
 
     public Student() {
