@@ -50,19 +50,4 @@ public class FavoriteServiceImpl implements FavoriteService{
         );
         return response;
     }
-
-    @Override
-    public int createFavorite(FavoriteServiceModel favoriteServiceModel) {
-        return 0;
-    }
-
-    @Override
-    public int updateFavorite(FavoriteServiceModel favoriteServiceModel, Integer id) {
-        return 0;
-    }
-
-    @Override
-    public void deleteFavoriteById(Integer id) {
-        favoriteRepository.deleteById(id);
-    }
 }
