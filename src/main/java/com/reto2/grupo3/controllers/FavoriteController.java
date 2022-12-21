@@ -42,5 +42,10 @@ public class FavoriteController {
     public ResponseEntity<FavoriteServiceModel> createEmployee(@RequestBody FavoritePostRequest favoritePostRequest) {
         return new ResponseEntity<>(favoriteService.create(favoritePostRequest), HttpStatus.OK);
     }
+    @PutMapping("/employees/{id}")
+    public ResponseEntity<FavoriteServiceModel> updateEmployeesById(@PathVariable("id") Integer id,
+                                                                    @RequestBody FavoritePostRequest favoritePostRequest) {
+        return new ResponseEntity<FavoriteServiceModel>(favoriteService.update(id, favoritePostRequest), HttpStatus.OK);
+    }
 
 }

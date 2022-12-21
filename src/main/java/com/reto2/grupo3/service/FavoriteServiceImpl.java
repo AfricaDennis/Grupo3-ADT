@@ -92,7 +92,24 @@ public class FavoriteServiceImpl implements FavoriteService{
 
     @Override
     public FavoriteServiceModel update(Integer id, FavoritePostRequest favoritePostRequest) {
-        return null;
+        Favorite favorite = favoriteRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el favorito")
+        );
+        if(favoritePostRequest.getId_teacher() != null){
+            favorite.setId_teacher(favoritePostRequest.getId_teacher());
+        }
+        if(favoritePostRequest.getId_student() != null){
+            favorite.setId_student(favoritePostRequest.getId_student());
+        }
+        Favorite queryFavorite = favoriteRepository.save(favorite);
+        FavoriteServiceModel response = new FavoriteServiceModel(
+                queryFavorite.getId(),
+                null,
+                queryFavorite.getId_teacher(),
+                null,
+                queryFavorite.getId_student()
+        );
+        return response;
     }
     @Override
     public void deleteById(Integer id) {
