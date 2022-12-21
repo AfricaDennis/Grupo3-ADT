@@ -1,9 +1,6 @@
 package com.reto2.grupo3.service;
 
-import com.reto2.grupo3.model.Favorite;
-import com.reto2.grupo3.model.FavoriteServiceModel;
-import com.reto2.grupo3.model.StudentServiceModel;
-import com.reto2.grupo3.model.TeacherServiceModel;
+import com.reto2.grupo3.model.*;
 import com.reto2.grupo3.repository.FavoriteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,17 +49,17 @@ public class FavoriteServiceImpl implements FavoriteService{
     }
 
     @Override
-    public int createFavorite(FavoriteServiceModel favoriteServiceModel) {
-        return 0;
+    public void deleteById(Integer id) {
+
     }
 
     @Override
-    public int updateFavorite(FavoriteServiceModel favoriteServiceModel, Integer id) {
-        return 0;
+    public FavoriteServiceModel create(FavoritePostRequest favoritePostRequest) {
+        return null;
     }
 
     @Override
-    public void deleteFavoriteById(Integer id) {
-        favoriteRepository.deleteById(id);
+    public FavoriteServiceModel update(Integer id, FavoritePostRequest favoritePostRequest) {
+        return null;
     }
 }
