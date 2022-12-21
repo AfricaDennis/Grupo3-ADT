@@ -1,9 +1,6 @@
 package com.reto2.grupo3.controllers;
 
-import com.reto2.grupo3.model.Favorite;
-import com.reto2.grupo3.model.FavoriteServiceModel;
-import com.reto2.grupo3.model.StudentServiceModel;
-import com.reto2.grupo3.model.TeacherServiceModel;
+import com.reto2.grupo3.model.*;
 import com.reto2.grupo3.repository.FavoriteRepository;
 import com.reto2.grupo3.service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,4 +38,9 @@ public class FavoriteController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No existe el favorito");
         }
     }
+    @PostMapping("/favorites")
+    public ResponseEntity<FavoriteServiceModel> createEmployee(@RequestBody FavoritePostRequest favoritePostRequest) {
+        return new ResponseEntity<>(favoriteService.create(favoritePostRequest), HttpStatus.OK);
+    }
+
 }

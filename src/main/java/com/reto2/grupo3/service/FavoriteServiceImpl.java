@@ -2,6 +2,7 @@ package com.reto2.grupo3.service;
 
 import com.reto2.grupo3.model.*;
 import com.reto2.grupo3.repository.FavoriteRepository;
+import com.reto2.grupo3.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
@@ -12,6 +13,8 @@ import java.util.List;
 public class FavoriteServiceImpl implements FavoriteService{
     @Autowired
     FavoriteRepository favoriteRepository;
+    @Autowired
+    StudentRepository studentRepository;
     @Override
     public List<FavoriteServiceModel> getAll() {
         Iterable<Favorite> favorites = favoriteRepository.findAll();
@@ -67,7 +70,24 @@ public class FavoriteServiceImpl implements FavoriteService{
 
     @Override
     public FavoriteServiceModel create(FavoritePostRequest favoritePostRequest) {
-        return null;
+
+        Favorite favorite = new Favorite(
+                favoritePostRequest.getId(),
+                null,
+                favoritePostRequest.getId_teacher(),
+                null,
+                favoritePostRequest.getId_student()
+        );
+
+        Favorite queryFavorite = favoriteRepository.save(favorite);
+        FavoriteServiceModel response = new FavoriteServiceModel(
+                queryFavorite.getId(),
+                null,
+                queryFavorite.getId_teacher(),
+                null,
+                queryFavorite.getId_student()
+        );
+        return response;
     }
 
     @Override
