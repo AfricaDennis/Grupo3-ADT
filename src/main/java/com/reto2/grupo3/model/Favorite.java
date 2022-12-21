@@ -1,5 +1,6 @@
 package com.reto2.grupo3.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -12,7 +13,7 @@ public class Favorite {
     private Integer id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_teacher", referencedColumnName = "user_id", foreignKey=@ForeignKey(name = "fk_teacher_favorites"))
-    @JsonManagedReference
+    @JsonBackReference(value = "favorite_teacher")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Teacher teacher;
 
@@ -21,7 +22,7 @@ public class Favorite {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_student", referencedColumnName = "user_id", foreignKey=@ForeignKey(name = "fk_student_favorites"))
-    @JsonManagedReference
+    @JsonBackReference(value = "favorite_student")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Student student;
 

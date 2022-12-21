@@ -1,7 +1,6 @@
 package com.reto2.grupo3.model;
 
 public class FavoritePostRequest {
-    private Integer id;
     private TeacherServiceModel teacher;
     private Integer id_teacher;
     private StudentServiceModel student;
@@ -10,27 +9,11 @@ public class FavoritePostRequest {
     public FavoritePostRequest() {
     }
 
-    public FavoritePostRequest(Integer id, TeacherServiceModel teacher, Integer id_teacher, StudentServiceModel student, Integer id_student) {
-        this.id = id;
-        this.teacher = teacher;
-        this.id_teacher = id_teacher;
-        this.student = student;
-        this.id_student = id_student;
-    }
-
     public FavoritePostRequest(TeacherServiceModel teacher, Integer id_teacher, StudentServiceModel student, Integer id_student) {
         this.teacher = teacher;
         this.id_teacher = id_teacher;
         this.student = student;
         this.id_student = id_student;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public TeacherServiceModel getTeacher() {
