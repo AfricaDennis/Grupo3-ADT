@@ -2,6 +2,8 @@ package com.reto2.grupo3.service;
 
 import com.reto2.grupo3.model.*;
 import com.reto2.grupo3.repository.FavoriteRepository;
+import com.reto2.grupo3.repository.StudentRepository;
+import com.reto2.grupo3.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,10 @@ import java.util.List;
 public class FavoriteServiceImpl implements FavoriteService{
     @Autowired
     FavoriteRepository favoriteRepository;
+    @Autowired
+    TeacherRepository teacherRepository;
+    @Autowired
+    StudentRepository studentRepository;
     @Override
     public List<FavoriteServiceModel> getAll() {
         Iterable<Favorite> favorites = favoriteRepository.findAll();
@@ -51,13 +57,23 @@ public class FavoriteServiceImpl implements FavoriteService{
     @Override
     public FavoriteServiceModel create(FavoritePostRequest favoritePostRequest) {
 
+
+        Teacher teacher = teacherRepository.findById(favoritePostRequest.getId_teacher()).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el alumno")
+        );
+        Student student = studentRepository.findById(favoritePostRequest.getId_teacher()).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el profesor")
+        );
+
         Favorite favorite = new Favorite(
                 null,
-                null,
+                teacher,
                 favoritePostRequest.getId_teacher(),
                 null,
                 favoritePostRequest.getId_student()
         );
+
+
 
         Favorite queryFavorite = favoriteRepository.save(favorite);
         FavoriteServiceModel response = new FavoriteServiceModel(
