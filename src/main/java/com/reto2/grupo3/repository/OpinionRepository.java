@@ -1,4 +1,7 @@
 package com.reto2.grupo3.repository;
 
-public interface OpinionRepository {
+import com.reto2.grupo3.model.Opinion;
+import org.springframework.data.repository.CrudRepository;
+public interface OpinionRepository extends CrudRepository <Opinion,Integer> {
+
 }
