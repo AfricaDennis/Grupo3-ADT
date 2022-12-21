@@ -37,8 +37,6 @@ public class FavoriteServiceImpl implements FavoriteService{
     public FavoriteServiceModel getFavorite(Integer id) {
         Favorite favorite = favoriteRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NO_CONTENT, "No existe favorito"));
-        StudentServiceModel student = null;
-        TeacherServiceModel teacher = null;
 
         FavoriteServiceModel response = new FavoriteServiceModel(
                 favorite.getId(),
@@ -54,7 +52,7 @@ public class FavoriteServiceImpl implements FavoriteService{
     public FavoriteServiceModel create(FavoritePostRequest favoritePostRequest) {
 
         Favorite favorite = new Favorite(
-                favoritePostRequest.getId(),
+                null,
                 null,
                 favoritePostRequest.getId_teacher(),
                 null,

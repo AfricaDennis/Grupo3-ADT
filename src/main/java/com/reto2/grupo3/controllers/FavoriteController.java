@@ -29,6 +29,14 @@ public class FavoriteController {
         return new ResponseEntity<FavoriteServiceModel>(favoriteService.getFavorite(id), HttpStatus.OK);
     }
 
+    @PostMapping("/favorites")
+    public ResponseEntity<FavoriteServiceModel> createEmployee(@RequestBody FavoritePostRequest favoritePostRequest) {
+        return new ResponseEntity<FavoriteServiceModel>(favoriteService.create(favoritePostRequest), HttpStatus.OK);
+    }
+    @PutMapping("/favorites/{id}")
+    public ResponseEntity<FavoriteServiceModel> updateEmployeesById(@PathVariable("id") Integer id, @RequestBody FavoritePostRequest favoritePostRequest) {
+        return new ResponseEntity<FavoriteServiceModel>(favoriteService.update(id, favoritePostRequest), HttpStatus.OK);
+    }
     @DeleteMapping("/favorites/{id}")
     public ResponseEntity<?> deleteFavoritesById(@PathVariable("id") Integer id) {
         try {
@@ -38,14 +46,4 @@ public class FavoriteController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No existe el favorito");
         }
     }
-    @PostMapping("/favorites")
-    public ResponseEntity<FavoriteServiceModel> createEmployee(@RequestBody FavoritePostRequest favoritePostRequest) {
-        return new ResponseEntity<>(favoriteService.create(favoritePostRequest), HttpStatus.OK);
-    }
-    @PutMapping("/employees/{id}")
-    public ResponseEntity<FavoriteServiceModel> updateEmployeesById(@PathVariable("id") Integer id,
-                                                                    @RequestBody FavoritePostRequest favoritePostRequest) {
-        return new ResponseEntity<FavoriteServiceModel>(favoriteService.update(id, favoritePostRequest), HttpStatus.OK);
-    }
-
 }
