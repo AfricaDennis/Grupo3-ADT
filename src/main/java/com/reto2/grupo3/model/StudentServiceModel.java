@@ -4,18 +4,24 @@ import java.util.List;
 
 public class StudentServiceModel {
 
-    private UserServiceModel user;
+    private User user;
     private List<Favorite> favorites;
     private List<Opinion> opinions;
 
     public StudentServiceModel() {
     }
 
-    public UserServiceModel getUser() {
+    public StudentServiceModel(User user, List<Favorite> favorites, List<Opinion> opinions) {
+        this.user = user;
+        this.favorites = favorites;
+        this.opinions = opinions;
+    }
+
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserServiceModel user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

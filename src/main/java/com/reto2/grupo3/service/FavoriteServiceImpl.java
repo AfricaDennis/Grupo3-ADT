@@ -38,6 +38,23 @@ public class FavoriteServiceImpl implements FavoriteService{
         StudentServiceModel student = null;
         TeacherServiceModel teacher = null;
 
+        Student studentBD = favorite.getStudent();
+        student = new StudentServiceModel(
+                studentBD.getUser(),
+                studentBD.getFavorites(),
+                studentBD.getOpinions()
+        );
+
+        Teacher teacherBD = favorite.getTeacher();
+        teacher = new TeacherServiceModel(
+                teacherBD.getUser(),
+                teacherBD.getLocation(),
+                teacherBD.getShift(),
+                teacherBD.getPhoto(),
+                teacherBD.getFavorites(),
+                teacherBD.getOpinions()
+        );
+
         FavoriteServiceModel response = new FavoriteServiceModel(
                 favorite.getId(),
                 teacher,
@@ -50,7 +67,7 @@ public class FavoriteServiceImpl implements FavoriteService{
 
     @Override
     public void deleteById(Integer id) {
-
+        favoriteRepository.deleteById(id);
     }
 
     @Override
