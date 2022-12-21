@@ -1,6 +1,7 @@
 package com.reto2.grupo3.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id ", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_teacher_id"))
+    @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_teacher_id"))
     private User user;
     @Column(length = 50)
     private String location;
@@ -25,14 +26,14 @@ public class Teacher {
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "favorite_teacher")
     private List<Favorite> favorites;
 
     @OneToMany(mappedBy = "teacher",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "opinion_teacher")
     private List<Opinion> opinions;
 
     public Teacher() {

@@ -29,13 +29,13 @@ public class FavoriteController {
         return new ResponseEntity<FavoriteServiceModel>(favoriteService.getFavorite(id), HttpStatus.OK);
     }
 
-    @PostMapping("/favorites")
+    @PostMapping(value ="/favorites", consumes = {"application/json"})
     public ResponseEntity<FavoriteServiceModel> createEmployee(@RequestBody FavoritePostRequest favoritePostRequest) {
-        return new ResponseEntity<FavoriteServiceModel>(favoriteService.create(favoritePostRequest), HttpStatus.OK);
+        return new ResponseEntity<FavoriteServiceModel>(favoriteService.create(favoritePostRequest), HttpStatus.CREATED);
     }
     @PutMapping("/favorites/{id}")
     public ResponseEntity<FavoriteServiceModel> updateEmployeesById(@PathVariable("id") Integer id, @RequestBody FavoritePostRequest favoritePostRequest) {
-        return new ResponseEntity<FavoriteServiceModel>(favoriteService.update(id, favoritePostRequest), HttpStatus.OK);
+        return new ResponseEntity<FavoriteServiceModel>(favoriteService.update(id, favoritePostRequest), HttpStatus.NO_CONTENT);
     }
     @DeleteMapping("/favorites/{id}")
     public ResponseEntity<?> deleteFavoritesById(@PathVariable("id") Integer id) {
