@@ -2,7 +2,6 @@ package com.reto2.grupo3.service;
 
 import com.reto2.grupo3.model.*;
 import com.reto2.grupo3.repository.FavoriteRepository;
-import com.reto2.grupo3.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -15,8 +14,6 @@ import java.util.List;
 public class FavoriteServiceImpl implements FavoriteService{
     @Autowired
     FavoriteRepository favoriteRepository;
-    @Autowired
-    StudentRepository studentRepository;
     @Override
     public List<FavoriteServiceModel> getAll() {
         Iterable<Favorite> favorites = favoriteRepository.findAll();
