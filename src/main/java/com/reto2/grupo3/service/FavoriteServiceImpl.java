@@ -66,11 +66,6 @@ public class FavoriteServiceImpl implements FavoriteService{
     }
 
     @Override
-    public void deleteById(Integer id) {
-        favoriteRepository.deleteById(id);
-    }
-
-    @Override
     public FavoriteServiceModel create(FavoritePostRequest favoritePostRequest) {
         return null;
     }
@@ -79,4 +74,9 @@ public class FavoriteServiceImpl implements FavoriteService{
     public FavoriteServiceModel update(Integer id, FavoritePostRequest favoritePostRequest) {
         return null;
     }
+    @Override
+    public void deleteById(Integer id) {
+        favoriteRepository.deleteById(id);
+    }
+
 }
