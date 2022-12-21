@@ -1,6 +1,5 @@
 package com.reto2.grupo3.model;
 
-<<<<<<< HEAD
 import java.util.List;
 
 public class TeacherServiceModel {
@@ -82,7 +81,4 @@ public class TeacherServiceModel {
                 ", opinions=" + opinions +
                 '}';
     }
-=======
-public class TeacherServiceModel {
->>>>>>> 90ed6ff (Add modelService)
 }

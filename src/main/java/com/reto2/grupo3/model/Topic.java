@@ -8,15 +8,19 @@ import jakarta.persistence.*;
 @Table(name="topics")
 public class Topic {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_teacher", foreignKey=@ForeignKey(name = "Fk_id_teacher"))
     @JsonManagedReference
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Teacher teacher;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+
+  @Column(name = "name")
     String name;
+    @Column(name="id_teacher", insertable = false, updatable = false)
     Integer idTeacher;
 
     public Topic() {
