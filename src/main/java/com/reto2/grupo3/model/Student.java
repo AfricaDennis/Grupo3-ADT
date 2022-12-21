@@ -1,6 +1,7 @@
 package com.reto2.grupo3.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -17,13 +18,13 @@ public class Student {
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "favorite_student")
     private List<Favorite> favorites;
     @OneToMany(mappedBy = "student",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonManagedReference(value = "opinion_student")
     private List<Opinion> opinions;
 
     public Student() {
