@@ -1,7 +1,9 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.Student;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.reto2.grupo3.model.Favorite.Favorite;
+import com.reto2.grupo3.model.Opinion.Opinion;
+import com.reto2.grupo3.model.User.User;
 import jakarta.persistence.*;
 
 import java.util.List;

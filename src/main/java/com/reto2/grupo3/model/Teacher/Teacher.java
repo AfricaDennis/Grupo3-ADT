@@ -1,19 +1,47 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.Teacher;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.reto2.grupo3.model.Favorite.Favorite;
+import com.reto2.grupo3.model.Opinion.Opinion;
+import com.reto2.grupo3.model.User.User;
+import jakarta.persistence.*;
 
 import java.util.List;
 
-public class TeacherServiceModel {
+@Entity
+@Table(name="teachers")
+public class Teacher {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_teacher_id"))
     private User user;
+    @Column(length = 50)
     private String location;
+    @Column(length = 50)
     private String shift;
+    @Column(length = 5000)
     private String photo;
+
+
+    @OneToMany(mappedBy = "teacher",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "favorite_teacher")
     private List<Favorite> favorites;
+
+    @OneToMany(mappedBy = "teacher",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "opinion_teacher")
     private List<Opinion> opinions;
 
-    public TeacherServiceModel() {
+    public Teacher() {
     }
 
-    public TeacherServiceModel(User user, String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions) {
+    public Teacher(User user, String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions) {
         this.user = user;
         this.location = location;
         this.shift = shift;
@@ -72,7 +100,7 @@ public class TeacherServiceModel {
 
     @Override
     public String toString() {
-        return "TeacherServiceModel{" +
+        return "Teacher{" +
                 "user=" + user +
                 ", location='" + location + '\'' +
                 ", shift='" + shift + '\'' +

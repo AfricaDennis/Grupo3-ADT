@@ -1,9 +1,7 @@
 package com.reto2.grupo3.controllers;
 
-import com.reto2.grupo3.model.Favorite;
-import com.reto2.grupo3.model.FavoriteServiceModel;
-import com.reto2.grupo3.model.Topic;
-import com.reto2.grupo3.model.TopicServiceModel;
+import com.reto2.grupo3.model.Topic.Topic;
+import com.reto2.grupo3.model.Topic.TopicServiceModel;
 import com.reto2.grupo3.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
