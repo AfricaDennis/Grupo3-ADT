@@ -26,18 +26,19 @@ public class FavoriteController {
     public ResponseEntity<List<FavoriteServiceModel>> getFavorites(){
         return new ResponseEntity<>(favoriteService.getAll(), HttpStatus.OK);
     }
+
     @GetMapping("/favorites/{id}")
     public ResponseEntity<FavoriteServiceModel> getFavoritesById(@PathVariable("id") Integer id){
         return new ResponseEntity<FavoriteServiceModel>(favoriteService.getFavorite(id), HttpStatus.OK);
     }
+
     @DeleteMapping("/favorites/{id}")
     public ResponseEntity<?> deleteFavoritesById(@PathVariable("id") Integer id) {
         try {
-            favoriteService.deleteFavoriteById(id);
+            favoriteService.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (EmptyResultDataAccessException e) {
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No existe el empleado");
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No existe el favorito");
         }
     }
-
 }
