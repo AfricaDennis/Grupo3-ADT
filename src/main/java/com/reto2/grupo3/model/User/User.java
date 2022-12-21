@@ -1,5 +1,7 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.User;
 
+import com.reto2.grupo3.model.Student.Student;
+import com.reto2.grupo3.model.Teacher.Teacher;
 import jakarta.persistence.*;
 
 @Entity

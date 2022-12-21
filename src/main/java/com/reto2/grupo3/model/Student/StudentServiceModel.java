@@ -1,4 +1,8 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.Student;
+
+import com.reto2.grupo3.model.Favorite.Favorite;
+import com.reto2.grupo3.model.Opinion.Opinion;
+import com.reto2.grupo3.model.User.User;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package com.reto2.grupo3.controllers;
 
-import com.reto2.grupo3.model.*;
-import com.reto2.grupo3.repository.FavoriteRepository;
-import com.reto2.grupo3.service.FavoriteService;
+import com.reto2.grupo3.model.Favorite.FavoritePostRequest;
+import com.reto2.grupo3.model.Favorite.FavoriteServiceModel;
+import com.reto2.grupo3.service.Favorite.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
