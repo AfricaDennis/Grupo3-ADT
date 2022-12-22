@@ -1,6 +1,9 @@
 package com.reto2.grupo3.model;
 
 
+import com.reto2.grupo3.model.Student.StudentServiceModel;
+import com.reto2.grupo3.model.Teacher.TeacherServiceModel;
+
 public class FavoriteServiceModel {
 
     private Integer id;

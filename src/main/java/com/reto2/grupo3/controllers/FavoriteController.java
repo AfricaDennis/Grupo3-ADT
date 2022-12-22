@@ -1,7 +1,8 @@
 package com.reto2.grupo3.controllers;
 
 import com.reto2.grupo3.model.Favorite.FavoritePostRequest;
-import com.reto2.grupo3.model.Favorite.FavoriteServiceModel;
+
+import com.reto2.grupo3.model.FavoriteServiceModel;
 import com.reto2.grupo3.service.Favorite.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;

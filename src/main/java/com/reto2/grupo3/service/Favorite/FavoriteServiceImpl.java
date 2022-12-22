@@ -2,7 +2,8 @@ package com.reto2.grupo3.service.Favorite;
 
 import com.reto2.grupo3.model.Favorite.Favorite;
 import com.reto2.grupo3.model.Favorite.FavoritePostRequest;
-import com.reto2.grupo3.model.Favorite.FavoriteServiceModel;
+
+import com.reto2.grupo3.model.FavoriteServiceModel;
 import com.reto2.grupo3.model.Student.Student;
 import com.reto2.grupo3.model.Student.StudentServiceModel;
 import com.reto2.grupo3.model.Teacher.Teacher;
