@@ -1,37 +1,22 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.Favorite;
 
-public class FavoriteServiceModel {
+import com.reto2.grupo3.model.Student.StudentServiceModel;
+import com.reto2.grupo3.model.Teacher.TeacherServiceModel;
 
-    private Integer id;
+public class FavoritePostRequest {
     private TeacherServiceModel teacher;
     private Integer id_teacher;
     private StudentServiceModel student;
     private Integer id_student;
 
-    public FavoriteServiceModel() {
+    public FavoritePostRequest() {
     }
 
-    public FavoriteServiceModel(Integer id, TeacherServiceModel teacher, Integer id_teacher, StudentServiceModel student, Integer id_student) {
-        this.id = id;
+    public FavoritePostRequest(TeacherServiceModel teacher, Integer id_teacher, StudentServiceModel student, Integer id_student) {
         this.teacher = teacher;
         this.id_teacher = id_teacher;
         this.student = student;
         this.id_student = id_student;
-    }
-
-    public FavoriteServiceModel(TeacherServiceModel teacher, Integer id_teacher, StudentServiceModel student, Integer id_student) {
-        this.teacher = teacher;
-        this.id_teacher = id_teacher;
-        this.student = student;
-        this.id_student = id_student;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public TeacherServiceModel getTeacher() {

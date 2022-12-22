@@ -1,7 +1,7 @@
-package com.reto2.grupo3.service;
+package com.reto2.grupo3.service.Favorite;
 
-import com.reto2.grupo3.model.FavoritePostRequest;
-import com.reto2.grupo3.model.FavoriteServiceModel;
+import com.reto2.grupo3.model.Favorite.FavoritePostRequest;
+import com.reto2.grupo3.model.Favorite.FavoriteServiceModel;
 
 import java.util.List;
 
