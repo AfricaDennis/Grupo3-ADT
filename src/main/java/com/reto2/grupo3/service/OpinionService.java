@@ -7,7 +7,7 @@ import com.reto2.grupo3.model.OpinionServiceModel;
 import java.util.List;
 
 public interface OpinionService {
-    List<OpinionServiceModel> getOpinions();
+    List<OpinionServiceModel> getAll();
     OpinionServiceModel getOpinion(Integer id);
     void deleteById(Integer id);
     OpinionServiceModel create(OpinionPostRequest opinionPostRequest);
