@@ -9,13 +9,9 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@PrimaryKeyJoinColumn(name="user_id")
 @Table(name="teachers")
-public class Teacher {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_teacher_id"))
-    private User user;
+public class Teacher extends User{
     @Column(length = 50)
     private String location;
     @Column(length = 50)
@@ -41,21 +37,12 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(User user, String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions) {
-        this.user = user;
+    public Teacher(String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions) {
         this.location = location;
         this.shift = shift;
         this.photo = photo;
         this.favorites = favorites;
         this.opinions = opinions;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public String getLocation() {
@@ -101,7 +88,6 @@ public class Teacher {
     @Override
     public String toString() {
         return "Teacher{" +
-                "user=" + user +
                 ", location='" + location + '\'' +
                 ", shift='" + shift + '\'' +
                 ", photo='" + photo + '\'' +

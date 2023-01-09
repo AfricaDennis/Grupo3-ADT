@@ -7,7 +7,7 @@ import com.reto2.grupo3.model.User.User;
 import java.util.List;
 
 public class TeacherServiceModel {
-    private User user;
+
     private String location;
     private String shift;
     private String photo;
@@ -17,8 +17,8 @@ public class TeacherServiceModel {
     public TeacherServiceModel() {
     }
 
-    public TeacherServiceModel(User user, String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions) {
-        this.user = user;
+    public TeacherServiceModel(String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions) {
+
         this.location = location;
         this.shift = shift;
         this.photo = photo;
@@ -26,13 +26,6 @@ public class TeacherServiceModel {
         this.opinions = opinions;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public String getLocation() {
         return location;
@@ -77,7 +70,6 @@ public class TeacherServiceModel {
     @Override
     public String toString() {
         return "TeacherServiceModel{" +
-                "user=" + user +
                 ", location='" + location + '\'' +
                 ", shift='" + shift + '\'' +
                 ", photo='" + photo + '\'' +

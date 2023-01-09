@@ -9,13 +9,9 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@PrimaryKeyJoinColumn(name="user_id")
 @Table(name="students")
-public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_student_id"))
-    private User user;
+public class Student extends User{
     @OneToMany(mappedBy = "student",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
@@ -32,18 +28,9 @@ public class Student {
     public Student() {
     }
 
-    public Student(User user, List<Favorite> favorites, List<Opinion> opinions) {
-        this.user = user;
+    public Student( List<Favorite> favorites, List<Opinion> opinions) {
         this.favorites = favorites;
         this.opinions = opinions;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public List<Favorite> getFavorites() {
@@ -64,7 +51,6 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "user=" + user +
                 ", favorites=" + favorites +
                 ", opinions=" + opinions +
                 '}';
