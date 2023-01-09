@@ -6,7 +6,7 @@ import com.reto2.grupo3.model.User.User;
 
 import java.util.List;
 
-public class TeacherServiceModel {
+public class TeacherServiceModel extends User{
 
     private String location;
     private String shift;
@@ -24,6 +24,33 @@ public class TeacherServiceModel {
         this.photo = photo;
         this.favorites = favorites;
         this.opinions = opinions;
+        this.description = description;
+    }
+
+    public TeacherServiceModel(Integer id, String name, String surname, String password, String email, String phone, String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions, String description) {
+        super(id, name, surname, password, email, phone);
+        this.location = location;
+        this.shift = shift;
+        this.photo = photo;
+        this.favorites = favorites;
+        this.opinions = opinions;
+        this.description = description;
+    }
+    public TeacherServiceModel(Integer id, String name, String surname, String email, String phone, String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions, String description) {
+        super(id, name, surname, email, phone);
+        this.location = location;
+        this.shift = shift;
+        this.photo = photo;
+        this.favorites = favorites;
+        this.opinions = opinions;
+        this.description = description;
+    }
+
+    public TeacherServiceModel(Integer id, String name, String surname, String email, String phone, String location, String shift, String photo, String description) {
+        super(id, name, surname, email, phone);
+        this.location = location;
+        this.shift = shift;
+        this.photo = photo;
         this.description = description;
     }
 
