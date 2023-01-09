@@ -31,7 +31,7 @@ public class FavoriteServiceImpl implements FavoriteService {
     @Override
     public List<FavoriteServiceModel> getAll() {
         Iterable<Favorite> favorites = favoriteRepository.findAll();
-        List<FavoriteServiceModel> response = new ArrayList<FavoriteServiceModel>();
+        List<FavoriteServiceModel> response = new ArrayList<>();
 
         for (Favorite favorite : favorites) {
             //Cuando tenga el servicio de teacher y student te cargo esta línea y llamo al servicio de cada uno
@@ -102,7 +102,7 @@ public class FavoriteServiceImpl implements FavoriteService {
     }
 
     @Override
-    public FavoriteServiceModel create(FavoritePostRequest favoritePostRequest) {
+    public FavoriteServiceModel createFavorite(FavoritePostRequest favoritePostRequest) {
         Teacher teacher = null;
         TeacherServiceModel teacherServiceModel = null;
         if (favoritePostRequest.getId_teacher() != null) {
@@ -161,7 +161,7 @@ public class FavoriteServiceImpl implements FavoriteService {
     }
 
     @Override
-    public FavoriteServiceModel update(Integer id, FavoritePostRequest favoritePostRequest) {
+    public FavoriteServiceModel updateFavorite(Integer id, FavoritePostRequest favoritePostRequest) {
 
         Teacher teacher = null;
         TeacherServiceModel teacherServiceModel = null;
@@ -226,7 +226,7 @@ public class FavoriteServiceImpl implements FavoriteService {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteFavoriteById(Integer id) {
         favoriteRepository.deleteById(id);
     }
 

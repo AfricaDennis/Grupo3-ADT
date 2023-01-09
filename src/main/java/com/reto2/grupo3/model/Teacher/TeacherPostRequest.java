@@ -1,71 +1,60 @@
 package com.reto2.grupo3.model.Teacher;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.reto2.grupo3.model.Favorite.Favorite;
 import com.reto2.grupo3.model.Opinion.Opinion;
 import com.reto2.grupo3.model.User.User;
-import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
-@PrimaryKeyJoinColumn(name="user_id")
-@Table(name="teachers")
-public class Teacher extends User{
-    @Column(length = 50)
+public class TeacherPostRequest  extends User {
+
     private String location;
-    @Column(length = 50)
     private String shift;
-    @Column(length = 5000)
     private String photo;
-    @Column(length = 500)
-    private String description;
-
-
-    @OneToMany(mappedBy = "teacher",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY)
-    @JsonManagedReference(value = "favorite_teacher")
     private List<Favorite> favorites;
-
-    @OneToMany(mappedBy = "teacher",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY)
-    @JsonManagedReference(value = "opinion_teacher")
     private List<Opinion> opinions;
+    private  String description;
 
-    public Teacher() {
+
+    public TeacherPostRequest() {
     }
-
-    public Teacher(Integer id, String name, String surname, String email, String phone, String location, String shift, String photo, String description, List<Favorite> favorites, List<Opinion> opinions) {
-        super(id, name, surname, email, phone);
+    public TeacherPostRequest(String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions, String description) {
         this.location = location;
         this.shift = shift;
         this.photo = photo;
-        this.description = description;
         this.favorites = favorites;
         this.opinions = opinions;
-    }
-
-    public Teacher(Integer id, String name, String surname, String password, String email, String location, String shift, String photo, String description, List<Favorite> favorites, List<Opinion> opinions, String teacherPostRequestDescription) {
-        this.location = location;
-        this.shift = shift;
-        this.photo = photo;
         this.description = description;
-        this.favorites = favorites;
-        this.opinions = opinions;
     }
 
-    public Teacher(Integer id, String name, String surname, String password, String email, String phone, String location, String shift, String photo, String description, List<Favorite> favorites, List<Opinion> opinions) {
+    public TeacherPostRequest(Integer id, String name, String surname, String password, String email, String phone, String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions, String description) {
         super(id, name, surname, password, email, phone);
         this.location = location;
         this.shift = shift;
         this.photo = photo;
-        this.description = description;
         this.favorites = favorites;
         this.opinions = opinions;
+        this.description = description;
+    }
+
+    public TeacherPostRequest(Integer id, String name, String surname, String email, String phone, String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions, String description) {
+        super(id, name, surname, email, phone);
+        this.location = location;
+        this.shift = shift;
+        this.photo = photo;
+        this.favorites = favorites;
+        this.opinions = opinions;
+        this.description = description;
+    }
+
+    public TeacherPostRequest(String name, String surname, String password, String email, String phone, String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions, String description) {
+        super(name, surname, password, email, phone);
+        this.location = location;
+        this.shift = shift;
+        this.photo = photo;
+        this.favorites = favorites;
+        this.opinions = opinions;
+        this.description = description;
     }
 
     public String getLocation() {
@@ -92,14 +81,6 @@ public class Teacher extends User{
         this.photo = photo;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public List<Favorite> getFavorites() {
         return favorites;
     }
@@ -116,15 +97,23 @@ public class Teacher extends User{
         this.opinions = opinions;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
-        return "Teacher{" +
+        return "TeacherPostRequest{" +
                 "location='" + location + '\'' +
                 ", shift='" + shift + '\'' +
                 ", photo='" + photo + '\'' +
-                ", description='" + description + '\'' +
                 ", favorites=" + favorites +
                 ", opinions=" + opinions +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
