@@ -5,6 +5,7 @@ import com.reto2.grupo3.model.Teacher.Teacher;
 import jakarta.persistence.*;
 
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 @Table(name="users")
 public class User {
     @Id
@@ -21,25 +22,16 @@ public class User {
     @Column(length = 13)
     private String phone;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
-    private Student student;
-
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
-    private Teacher teacher;
-
-
     public User() {
     }
 
-    public User(Integer id, String name, String surname, String password, String email, String phone, Student student, Teacher teacher) {
+    public User(Integer id, String name, String surname, String password, String email, String phone) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.password = password;
         this.email = email;
         this.phone = phone;
-        this.student = student;
-        this.teacher = teacher;
     }
 
     public Integer getId() {
@@ -90,21 +82,6 @@ public class User {
         this.phone = phone;
     }
 
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
 
     @Override
     public String toString() {
@@ -115,8 +92,6 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", student=" + student +
-                ", teacher=" + teacher +
                 '}';
     }
 }

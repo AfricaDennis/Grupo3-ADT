@@ -32,6 +32,11 @@ public class FavoriteServiceImpl implements FavoriteService {
         Iterable<Favorite> favorites = favoriteRepository.findAll();
         List<FavoriteServiceModel> response = new ArrayList<FavoriteServiceModel>();
 
+        Teacher teacher = null;
+        TeacherServiceModel teacherServiceModel = null;
+
+
+
         for(Favorite favorite : favorites){
             response.add(
                     new FavoriteServiceModel(
@@ -70,12 +75,11 @@ public class FavoriteServiceImpl implements FavoriteService {
                     () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el profesor")
             );
             teacherServiceModel = new TeacherServiceModel(
-                    teacher.getUser(),
                     teacher.getLocation(),
                     teacher.getShift(),
                     teacher.getPhoto(),
-                    null,
-                    null
+                    teacher.getFavorites(),
+                    teacher.getOpinions()
             );
 
         }
@@ -87,9 +91,8 @@ public class FavoriteServiceImpl implements FavoriteService {
             );
 
                 studentServiceModel = new StudentServiceModel(
-                        student.getUser(),
-                        null,
-                        null
+                        student.getFavorites(),
+                        student.getOpinions()
                 );
         }
 
@@ -116,7 +119,52 @@ public class FavoriteServiceImpl implements FavoriteService {
     @Override
     public FavoriteServiceModel update(Integer id, FavoritePostRequest favoritePostRequest) {
 
-        return null;
+        Teacher teacher = null;
+        TeacherServiceModel teacherServiceModel = null;
+        if(favoritePostRequest.getId_teacher() != null) {
+            teacher = teacherRepository.findById(favoritePostRequest.getId_teacher()).orElseThrow(
+                    () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el profesor")
+            );
+            teacherServiceModel = new TeacherServiceModel(
+                    teacher.getLocation(),
+                    teacher.getShift(),
+                    teacher.getPhoto(),
+                    teacher.getFavorites(),
+                    teacher.getOpinions()
+            );
+
+        }
+        Student student = null;
+        StudentServiceModel studentServiceModel = null;
+        if(favoritePostRequest.getId_student() != null) {
+            student = studentRepository.findById(favoritePostRequest.getId_student()).orElseThrow(
+                    () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el alumno")
+            );
+
+            studentServiceModel = new StudentServiceModel(
+                    student.getFavorites(),
+                    student.getOpinions()
+            );
+        }
+
+        Favorite favorite = new Favorite(
+                teacher,
+                favoritePostRequest.getId_teacher(),
+                student,
+                favoritePostRequest.getId_student()
+        );
+
+
+        Favorite queryFavorite = favoriteRepository.save(favorite);
+        FavoriteServiceModel response = new FavoriteServiceModel(
+                queryFavorite.getId(),
+                teacherServiceModel,
+                queryFavorite.getId_teacher(),
+                studentServiceModel,
+                queryFavorite.getId_student()
+        );
+
+        return response;
     }
     @Override
     public void deleteById(Integer id) {
