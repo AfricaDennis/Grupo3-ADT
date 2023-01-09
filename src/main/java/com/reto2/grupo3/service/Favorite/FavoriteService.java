@@ -8,7 +8,7 @@ import java.util.List;
 public interface FavoriteService {
     List<FavoriteServiceModel> getAll();
     FavoriteServiceModel getFavorite(Integer id);
-    void deleteById(Integer id);
-    FavoriteServiceModel create(FavoritePostRequest favoritePostRequest);
-    FavoriteServiceModel update(Integer id, FavoritePostRequest favoritePostRequest);
+    FavoriteServiceModel createFavorite(FavoritePostRequest favoritePostRequest);
+    FavoriteServiceModel updateFavorite(Integer id, FavoritePostRequest favoritePostRequest);
+    void deleteFavoriteById(Integer id);
 }

@@ -29,17 +29,17 @@ public class FavoriteController {
     }
 
     @PostMapping(value ="/favorites", consumes = {"application/json"})
-    public ResponseEntity<FavoriteServiceModel> createEmployee(@RequestBody FavoritePostRequest favoritePostRequest) {
-        return new ResponseEntity<FavoriteServiceModel>(favoriteService.create(favoritePostRequest), HttpStatus.CREATED);
+    public ResponseEntity<FavoriteServiceModel> createFavorite(@RequestBody FavoritePostRequest favoritePostRequest) {
+        return new ResponseEntity<FavoriteServiceModel>(favoriteService.createFavorite(favoritePostRequest), HttpStatus.CREATED);
     }
     @PutMapping("/favorites/{id}")
-    public ResponseEntity<FavoriteServiceModel> updateEmployeesById(@PathVariable("id") Integer id, @RequestBody FavoritePostRequest favoritePostRequest) {
-        return new ResponseEntity<FavoriteServiceModel>(favoriteService.update(id, favoritePostRequest), HttpStatus.NO_CONTENT);
+    public ResponseEntity<FavoriteServiceModel> updateFavoriteById(@PathVariable("id") Integer id, @RequestBody FavoritePostRequest favoritePostRequest) {
+        return new ResponseEntity<FavoriteServiceModel>(favoriteService.updateFavorite(id, favoritePostRequest), HttpStatus.NO_CONTENT);
     }
     @DeleteMapping("/favorites/{id}")
-    public ResponseEntity<?> deleteFavoritesById(@PathVariable("id") Integer id) {
+    public ResponseEntity<?> deleteFavoriteById(@PathVariable("id") Integer id) {
         try {
-            favoriteService.deleteById(id);
+            favoriteService.deleteFavoriteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (EmptyResultDataAccessException e) {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No existe el favorito");
