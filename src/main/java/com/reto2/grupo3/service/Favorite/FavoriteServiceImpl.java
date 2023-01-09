@@ -27,18 +27,38 @@ public class FavoriteServiceImpl implements FavoriteService {
     TeacherRepository teacherRepository;
     @Autowired
     StudentRepository studentRepository;
+
     @Override
     public List<FavoriteServiceModel> getAll() {
         Iterable<Favorite> favorites = favoriteRepository.findAll();
         List<FavoriteServiceModel> response = new ArrayList<FavoriteServiceModel>();
 
-        for(Favorite favorite : favorites){
+        for (Favorite favorite : favorites) {
+            //Cuando tenga el servicio de teacher y student te cargo esta línea y llamo al servicio de cada uno
+            Teacher teacher = teacherRepository.findById(favorite.getId_teacher()).get();
+            Student student = studentRepository.findById(favorite.getId_student()).get();
             response.add(
                     new FavoriteServiceModel(
                             favorite.getId(),
-                            null,
+                            new TeacherServiceModel(
+                                    teacher.getId(),
+                                    teacher.getName(),
+                                    teacher.getSurname(),
+                                    teacher.getEmail(),
+                                    teacher.getPhone(),
+                                    teacher.getLocation(),
+                                    teacher.getShift(),
+                                    teacher.getPhoto(),
+                                    teacher.getDescription()
+                            ),
                             favorite.getId_teacher(),
-                            null,
+                            new StudentServiceModel(
+                                    student.getId(),
+                                    student.getName(),
+                                    student.getSurname(),
+                                    student.getEmail(),
+                                    student.getPhone()
+                            ),
                             favorite.getId_student()
                     )
             );
@@ -51,11 +71,31 @@ public class FavoriteServiceImpl implements FavoriteService {
         Favorite favorite = favoriteRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NO_CONTENT, "No existe favorito"));
 
+        //Cuando tenga el servicio de teacher y student te cargo esta línea y llamo al servicio de cada uno
+        Teacher teacher = teacherRepository.findById(favorite.getId_teacher()).get();
+        Student student = studentRepository.findById(favorite.getId_student()).get();
+
         FavoriteServiceModel response = new FavoriteServiceModel(
                 favorite.getId(),
-                null,
+                new TeacherServiceModel(
+                        teacher.getId(),
+                        teacher.getName(),
+                        teacher.getSurname(),
+                        teacher.getEmail(),
+                        teacher.getPhone(),
+                        teacher.getLocation(),
+                        teacher.getShift(),
+                        teacher.getPhoto(),
+                        teacher.getDescription()
+                ),
                 favorite.getId_teacher(),
-                null,
+                new StudentServiceModel(
+                        student.getId(),
+                        student.getName(),
+                        student.getSurname(),
+                        student.getEmail(),
+                        student.getPhone()
+                ),
                 favorite.getId_student()
         );
         return response;
@@ -65,11 +105,16 @@ public class FavoriteServiceImpl implements FavoriteService {
     public FavoriteServiceModel create(FavoritePostRequest favoritePostRequest) {
         Teacher teacher = null;
         TeacherServiceModel teacherServiceModel = null;
-        if(favoritePostRequest.getId_teacher() != null) {
-                teacher = teacherRepository.findById(favoritePostRequest.getId_teacher()).orElseThrow(
+        if (favoritePostRequest.getId_teacher() != null) {
+            teacher = teacherRepository.findById(favoritePostRequest.getId_teacher()).orElseThrow(
                     () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el profesor")
             );
             teacherServiceModel = new TeacherServiceModel(
+                    teacher.getId(),
+                    teacher.getName(),
+                    teacher.getSurname(),
+                    teacher.getEmail(),
+                    teacher.getPhone(),
                     teacher.getLocation(),
                     teacher.getShift(),
                     teacher.getPhoto(),
@@ -81,15 +126,18 @@ public class FavoriteServiceImpl implements FavoriteService {
         }
         Student student = null;
         StudentServiceModel studentServiceModel = null;
-        if(favoritePostRequest.getId_student() != null) {
-                student = studentRepository.findById(favoritePostRequest.getId_student()).orElseThrow(
+        if (favoritePostRequest.getId_student() != null) {
+            student = studentRepository.findById(favoritePostRequest.getId_student()).orElseThrow(
                     () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el alumno")
             );
 
-                studentServiceModel = new StudentServiceModel(
-                        student.getFavorites(),
-                        student.getOpinions()
-                );
+            studentServiceModel = new StudentServiceModel(
+                    student.getId(),
+                    student.getName(),
+                    student.getSurname(),
+                    student.getEmail(),
+                    student.getPhone()
+            );
         }
 
         Favorite favorite = new Favorite(
@@ -117,11 +165,16 @@ public class FavoriteServiceImpl implements FavoriteService {
 
         Teacher teacher = null;
         TeacherServiceModel teacherServiceModel = null;
-        if(favoritePostRequest.getId_teacher() != null) {
+        if (favoritePostRequest.getId_teacher() != null) {
             teacher = teacherRepository.findById(favoritePostRequest.getId_teacher()).orElseThrow(
                     () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el profesor")
             );
             teacherServiceModel = new TeacherServiceModel(
+                    teacher.getId(),
+                    teacher.getName(),
+                    teacher.getSurname(),
+                    teacher.getEmail(),
+                    teacher.getPhone(),
                     teacher.getLocation(),
                     teacher.getShift(),
                     teacher.getPhoto(),
@@ -133,24 +186,32 @@ public class FavoriteServiceImpl implements FavoriteService {
         }
         Student student = null;
         StudentServiceModel studentServiceModel = null;
-        if(favoritePostRequest.getId_student() != null) {
+        if (favoritePostRequest.getId_student() != null) {
             student = studentRepository.findById(favoritePostRequest.getId_student()).orElseThrow(
                     () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el alumno")
             );
 
             studentServiceModel = new StudentServiceModel(
-                    student.getFavorites(),
-                    student.getOpinions()
+                    student.getId(),
+                    student.getName(),
+                    student.getSurname(),
+                    student.getEmail(),
+                    student.getPhone()
             );
         }
 
-        Favorite favorite = new Favorite(
-                teacher,
-                favoritePostRequest.getId_teacher(),
-                student,
-                favoritePostRequest.getId_student()
+        Favorite favorite = favoriteRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el favorito")
         );
 
+        if(favoritePostRequest.getId_teacher() != null) {
+            favorite.setId_teacher(favoritePostRequest.getId_teacher());
+        }
+        if(favoritePostRequest.getId_student() != null) {
+            favorite.setId_student(favoritePostRequest.getId_student());
+        }
+        favorite.setTeacher(teacher);
+        favorite.setStudent(student);
 
         Favorite queryFavorite = favoriteRepository.save(favorite);
         FavoriteServiceModel response = new FavoriteServiceModel(
@@ -163,6 +224,7 @@ public class FavoriteServiceImpl implements FavoriteService {
 
         return response;
     }
+
     @Override
     public void deleteById(Integer id) {
         favoriteRepository.deleteById(id);
