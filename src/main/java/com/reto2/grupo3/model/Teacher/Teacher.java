@@ -18,6 +18,8 @@ public class Teacher extends User{
     private String shift;
     @Column(length = 5000)
     private String photo;
+    @Column(length = 500)
+    private String description;
 
 
     @OneToMany(mappedBy = "teacher",
@@ -37,10 +39,21 @@ public class Teacher extends User{
     public Teacher() {
     }
 
-    public Teacher(String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions) {
+    public Teacher(String location, String shift, String photo, String description, List<Favorite> favorites, List<Opinion> opinions) {
         this.location = location;
         this.shift = shift;
         this.photo = photo;
+        this.description = description;
+        this.favorites = favorites;
+        this.opinions = opinions;
+    }
+
+    public Teacher(Integer id, String name, String surname, String password, String email, String phone, String location, String shift, String photo, String description, List<Favorite> favorites, List<Opinion> opinions) {
+        super(id, name, surname, password, email, phone);
+        this.location = location;
+        this.shift = shift;
+        this.photo = photo;
+        this.description = description;
         this.favorites = favorites;
         this.opinions = opinions;
     }
@@ -69,6 +82,14 @@ public class Teacher extends User{
         this.photo = photo;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public List<Favorite> getFavorites() {
         return favorites;
     }
@@ -88,9 +109,10 @@ public class Teacher extends User{
     @Override
     public String toString() {
         return "Teacher{" +
-                ", location='" + location + '\'' +
+                "location='" + location + '\'' +
                 ", shift='" + shift + '\'' +
                 ", photo='" + photo + '\'' +
+                ", description='" + description + '\'' +
                 ", favorites=" + favorites +
                 ", opinions=" + opinions +
                 '}';

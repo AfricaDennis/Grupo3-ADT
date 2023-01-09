@@ -28,7 +28,13 @@ public class Student extends User{
     public Student() {
     }
 
-    public Student( List<Favorite> favorites, List<Opinion> opinions) {
+    public Student(List<Favorite> favorites, List<Opinion> opinions) {
+        this.favorites = favorites;
+        this.opinions = opinions;
+    }
+
+    public Student(Integer id, String name, String surname, String password, String email, String phone, List<Favorite> favorites, List<Opinion> opinions) {
+        super(id, name, surname, password, email, phone);
         this.favorites = favorites;
         this.opinions = opinions;
     }
@@ -48,10 +54,11 @@ public class Student extends User{
     public void setOpinions(List<Opinion> opinions) {
         this.opinions = opinions;
     }
+
     @Override
     public String toString() {
         return "Student{" +
-                ", favorites=" + favorites +
+                "favorites=" + favorites +
                 ", opinions=" + opinions +
                 '}';
     }
