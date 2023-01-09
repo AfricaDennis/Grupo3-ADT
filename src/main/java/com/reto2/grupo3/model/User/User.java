@@ -1,38 +1,37 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.User;
 
+import com.reto2.grupo3.model.Student.Student;
+import com.reto2.grupo3.model.Teacher.Teacher;
+import jakarta.persistence.*;
 
-public class UserServiceModel {
+@Entity
+@Inheritance(strategy=InheritanceType.JOINED)
+@Table(name="users")
+public class User implements java.io.Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(length = 50)
     private String name;
+    @Column(length = 50)
     private String surname;
+    @Column(length = 5000)
     private String password;
+    @Column(length = 50)
     private String email;
+    @Column(length = 13)
     private String phone;
-    private StudentServiceModel student;
-    private TeacherServiceModel teacher;
 
-    public UserServiceModel() {
+    public User() {
     }
 
-    public UserServiceModel(Integer id, String name, String surname, String password, String email, String phone, StudentServiceModel student, TeacherServiceModel teacher) {
+    public User(Integer id, String name, String surname, String password, String email, String phone) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.password = password;
         this.email = email;
         this.phone = phone;
-        this.student = student;
-        this.teacher = teacher;
-    }
-
-    public UserServiceModel(String name, String surname, String password, String email, String phone, StudentServiceModel student, TeacherServiceModel teacher) {
-        this.name = name;
-        this.surname = surname;
-        this.password = password;
-        this.email = email;
-        this.phone = phone;
-        this.student = student;
-        this.teacher = teacher;
     }
 
     public Integer getId() {
@@ -83,33 +82,16 @@ public class UserServiceModel {
         this.phone = phone;
     }
 
-    public StudentServiceModel getStudent() {
-        return student;
-    }
-
-    public void setStudent(StudentServiceModel student) {
-        this.student = student;
-    }
-
-    public TeacherServiceModel getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(TeacherServiceModel teacher) {
-        this.teacher = teacher;
-    }
 
     @Override
     public String toString() {
-        return "UserServiceModel{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", student=" + student +
-                ", teacher=" + teacher +
                 '}';
     }
 }

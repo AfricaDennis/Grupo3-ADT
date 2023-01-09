@@ -1,4 +1,6 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.Topic;
+
+import com.reto2.grupo3.model.Teacher.TeacherServiceModel;
 
 public class TopicServiceModel {
 

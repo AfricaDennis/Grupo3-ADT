@@ -1,28 +1,21 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.Student;
+
+import com.reto2.grupo3.model.Favorite.Favorite;
+import com.reto2.grupo3.model.Opinion.Opinion;
+import com.reto2.grupo3.model.User.User;
 
 import java.util.List;
 
 public class StudentServiceModel {
-
-    private User user;
     private List<Favorite> favorites;
     private List<Opinion> opinions;
 
     public StudentServiceModel() {
     }
 
-    public StudentServiceModel(User user, List<Favorite> favorites, List<Opinion> opinions) {
-        this.user = user;
+    public StudentServiceModel(List<Favorite> favorites, List<Opinion> opinions) {
         this.favorites = favorites;
         this.opinions = opinions;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public List<Favorite> getFavorites() {
@@ -44,7 +37,6 @@ public class StudentServiceModel {
     @Override
     public String toString() {
         return "StudentServiceModel{" +
-                "user=" + user +
                 ", favorites=" + favorites +
                 ", opinions=" + opinions +
                 '}';

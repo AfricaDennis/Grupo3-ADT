@@ -1,7 +1,8 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.Topic;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.reto2.grupo3.model.Teacher.Teacher;
 import jakarta.persistence.*;
 
 @Entity

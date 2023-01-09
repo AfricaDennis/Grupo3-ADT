@@ -1,8 +1,9 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.Favorite;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.reto2.grupo3.model.Student.Student;
+import com.reto2.grupo3.model.Teacher.Teacher;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,7 +13,7 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_teacher", referencedColumnName = "user_id", foreignKey=@ForeignKey(name = "fk_teacher_favorites"))
+    @JoinColumn(name = "id_teacher", foreignKey=@ForeignKey(name = "fk_teacher_favorites"))
     @JsonBackReference(value = "favorite_teacher")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Teacher teacher;
@@ -21,7 +22,7 @@ public class Favorite {
     private Integer id_teacher;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_student", referencedColumnName = "user_id", foreignKey=@ForeignKey(name = "fk_student_favorites"))
+    @JoinColumn(name = "id_student", foreignKey=@ForeignKey(name = "fk_student_favorites"))
     @JsonBackReference(value = "favorite_student")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Student student;

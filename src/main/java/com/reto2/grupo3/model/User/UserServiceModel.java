@@ -1,36 +1,34 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.User;
 
-import jakarta.persistence.*;
 
-@Entity
-@Table(name="users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+import com.reto2.grupo3.model.Student.StudentServiceModel;
+import com.reto2.grupo3.model.Teacher.TeacherServiceModel;
+
+public class UserServiceModel {
     private Integer id;
-    @Column(length = 50)
     private String name;
-    @Column(length = 50)
     private String surname;
-    @Column(length = 5000)
     private String password;
-    @Column(length = 50)
     private String email;
-    @Column(length = 13)
     private String phone;
+    private StudentServiceModel student;
+    private TeacherServiceModel teacher;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
-    private Student student;
-
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
-    private Teacher teacher;
-
-
-    public User() {
+    public UserServiceModel() {
     }
 
-    public User(Integer id, String name, String surname, String password, String email, String phone, Student student, Teacher teacher) {
+    public UserServiceModel(Integer id, String name, String surname, String password, String email, String phone, StudentServiceModel student, TeacherServiceModel teacher) {
         this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.student = student;
+        this.teacher = teacher;
+    }
+
+    public UserServiceModel(String name, String surname, String password, String email, String phone, StudentServiceModel student, TeacherServiceModel teacher) {
         this.name = name;
         this.surname = surname;
         this.password = password;
@@ -88,25 +86,25 @@ public class User {
         this.phone = phone;
     }
 
-    public Student getStudent() {
+    public StudentServiceModel getStudent() {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(StudentServiceModel student) {
         this.student = student;
     }
 
-    public Teacher getTeacher() {
+    public TeacherServiceModel getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Teacher teacher) {
+    public void setTeacher(TeacherServiceModel teacher) {
         this.teacher = teacher;
     }
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserServiceModel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +

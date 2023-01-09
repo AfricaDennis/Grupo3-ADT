@@ -1,19 +1,17 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.Student;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.reto2.grupo3.model.Favorite.Favorite;
+import com.reto2.grupo3.model.Opinion.Opinion;
+import com.reto2.grupo3.model.User.User;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
+@PrimaryKeyJoinColumn(name="user_id")
 @Table(name="students")
-public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_student_id"))
-    private User user;
+public class Student extends User{
     @OneToMany(mappedBy = "student",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
@@ -30,18 +28,15 @@ public class Student {
     public Student() {
     }
 
-    public Student(User user, List<Favorite> favorites, List<Opinion> opinions) {
-        this.user = user;
+    public Student(List<Favorite> favorites, List<Opinion> opinions) {
         this.favorites = favorites;
         this.opinions = opinions;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public Student(Integer id, String name, String surname, String password, String email, String phone, List<Favorite> favorites, List<Opinion> opinions) {
+        super(id, name, surname, password, email, phone);
+        this.favorites = favorites;
+        this.opinions = opinions;
     }
 
     public List<Favorite> getFavorites() {
@@ -59,11 +54,11 @@ public class Student {
     public void setOpinions(List<Opinion> opinions) {
         this.opinions = opinions;
     }
+
     @Override
     public String toString() {
         return "Student{" +
-                "user=" + user +
-                ", favorites=" + favorites +
+                "favorites=" + favorites +
                 ", opinions=" + opinions +
                 '}';
     }

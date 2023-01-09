@@ -1,19 +1,44 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.Opinion;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.reto2.grupo3.model.Student.Student;
+import com.reto2.grupo3.model.Teacher.Teacher;
+import jakarta.persistence.*;
 
-public class OpinionServiceModel {
+@Entity
+@Table(name = "opinion")
+public class Opinion {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    private TeacherServiceModel teacher;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_teacher", referencedColumnName = "user_id", foreignKey=@ForeignKey(name = "fk_teacher_opinions"))
+    @JsonBackReference(value = "opinion_teacher")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Teacher teacher;
+
+    @Column(name="id_teacher", insertable = false, updatable = false)
     private Integer id_teacher;
-    private StudentServiceModel student;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_students", referencedColumnName = "user_id", foreignKey=@ForeignKey(name = "fk_student_opinions"))
+    @JsonBackReference(value = "opinion_student")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Student student;
+
+    @Column(name="id_students", insertable = false, updatable = false)
     private Integer id_students;
+    @Column(length = 50)
     String assesment;
+    @Column(length = 50)
     String date;
+    @Column(length = 50)
     String opinion;
 
-    public OpinionServiceModel() {
+    public Opinion() {
     }
 
-    public OpinionServiceModel(Integer id, TeacherServiceModel teacher, Integer id_teacher, StudentServiceModel student, Integer id_students, String assesment, String date, String opinion) {
+    public Opinion(Integer id, Teacher teacher, Integer id_teacher, Student student, Integer id_students, String assesment, String date, String opinion) {
         this.id = id;
         this.teacher = teacher;
         this.id_teacher = id_teacher;
@@ -24,14 +49,12 @@ public class OpinionServiceModel {
         this.opinion = opinion;
     }
 
-    public OpinionServiceModel(TeacherServiceModel teacher, Integer id_teacher, StudentServiceModel student, Integer id_students) {
+    public Opinion( Integer id, Teacher teacher, Integer id_teacher, Student student, Integer id_students) {
+        this.id = id;
         this.teacher = teacher;
         this.id_teacher = id_teacher;
         this.student = student;
         this.id_students = id_students;
-    }
-
-    public OpinionServiceModel(Integer id, Object o, Integer idTeacher, Object o1, Integer idStudents) {
     }
 
     public Integer getId() {
@@ -42,11 +65,11 @@ public class OpinionServiceModel {
         this.id = id;
     }
 
-    public TeacherServiceModel getTeacher() {
+    public Teacher getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(TeacherServiceModel teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
 
@@ -58,11 +81,11 @@ public class OpinionServiceModel {
         this.id_teacher = id_teacher;
     }
 
-    public StudentServiceModel getStudent() {
+    public Student getStudent() {
         return student;
     }
 
-    public void setStudent(StudentServiceModel student) {
+    public void setStudent(Student student) {
         this.student = student;
     }
 
@@ -100,7 +123,7 @@ public class OpinionServiceModel {
 
     @Override
     public String toString() {
-        return "OpinionServiceModel{" +
+        return "Opinion{" +
                 "id=" + id +
                 ", teacher=" + teacher +
                 ", id_teacher=" + id_teacher +
