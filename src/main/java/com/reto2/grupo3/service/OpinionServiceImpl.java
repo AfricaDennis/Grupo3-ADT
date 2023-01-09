@@ -3,6 +3,7 @@ package com.reto2.grupo3.service;
 import com.reto2.grupo3.model.Opinion;
 import com.reto2.grupo3.model.OpinionPostRequest;
 import com.reto2.grupo3.model.OpinionServiceModel;
+import com.reto2.grupo3.model.Teacher;
 import com.reto2.grupo3.repository.OpinionRepository;
 import com.reto2.grupo3.repository.StudentRepository;
 import com.reto2.grupo3.repository.TeacherRepository;
@@ -69,12 +70,46 @@ public class OpinionServiceImpl implements OpinionService{
 
     @Override
     public OpinionServiceModel create(OpinionPostRequest opinionPostRequest) {
-        return null;
+        Teacher teacher = teacherRepository.findById(opinionPostRequest.getId_teacher()).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el alumno")
+        );
+        Opinion opinion = new Opinion(
+                opinionPostRequest.getId(),
+                null,
+                opinionPostRequest.getId_teacher(),
+                null,
+                opinionPostRequest.getId_student()
+        );
+
+        Opinion queryOpinion = opinionRepository.save(opinion);
+        OpinionServiceModel response = new OpinionServiceModel(
+                queryOpinion.getId(),
+                null,
+                queryOpinion.getId_teacher(),
+                null,
+                queryOpinion.getId_students()
+        );
+        return response;
     }
 
     @Override
     public OpinionServiceModel update(Integer id, OpinionPostRequest opinionPostRequest) {
-        return null;
+        Opinion opinion = opinionRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe la opinion")
+        );
+        if(opinionPostRequest.getId_teacher() != null){
+            opinion.setId_teacher(opinionPostRequest.getId_teacher());
+        }
+
+        Opinion queryOpinion = opinionRepository.save(opinion);
+        OpinionServiceModel response = new OpinionServiceModel(
+                queryOpinion.getId(),
+                null,
+                queryOpinion.getId_teacher(),
+                null,
+                queryOpinion.getId_students()
+        );
+        return response;
     }
 
 }

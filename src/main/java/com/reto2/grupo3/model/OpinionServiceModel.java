@@ -24,14 +24,14 @@ public class OpinionServiceModel {
         this.opinion = opinion;
     }
 
-    public OpinionServiceModel(TeacherServiceModel teacher, Integer id_teacher, StudentServiceModel student, Integer id_students, String assesment, String date, String opinion) {
+    public OpinionServiceModel(TeacherServiceModel teacher, Integer id_teacher, StudentServiceModel student, Integer id_students) {
         this.teacher = teacher;
         this.id_teacher = id_teacher;
         this.student = student;
         this.id_students = id_students;
-        this.assesment = assesment;
-        this.date = date;
-        this.opinion = opinion;
+    }
+
+    public OpinionServiceModel(Integer id, Object o, Integer idTeacher, Object o1, Integer idStudents) {
     }
 
     public Integer getId() {
