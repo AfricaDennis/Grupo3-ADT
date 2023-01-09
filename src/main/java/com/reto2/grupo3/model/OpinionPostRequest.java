@@ -1,5 +1,8 @@
 package com.reto2.grupo3.model;
 
+import com.reto2.grupo3.model.Student.StudentServiceModel;
+import com.reto2.grupo3.model.Teacher.TeacherServiceModel;
+
 public class OpinionPostRequest {
     private TeacherServiceModel teacher;
     private Integer id_teacher;

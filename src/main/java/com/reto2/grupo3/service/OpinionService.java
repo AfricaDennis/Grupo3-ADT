@@ -1,8 +1,8 @@
 package com.reto2.grupo3.service;
 
-import com.reto2.grupo3.model.Opinion;
+import com.reto2.grupo3.model.Opinion.Opinion;
 import com.reto2.grupo3.model.OpinionPostRequest;
-import com.reto2.grupo3.model.OpinionServiceModel;
+import com.reto2.grupo3.model.Opinion.OpinionServiceModel;
 
 import java.util.List;
 

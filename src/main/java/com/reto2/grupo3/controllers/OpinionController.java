@@ -1,7 +1,7 @@
 package com.reto2.grupo3.controllers;
 
-import com.reto2.grupo3.model.Opinion;
-import com.reto2.grupo3.model.OpinionServiceModel;
+import com.reto2.grupo3.model.Opinion.Opinion;
+import com.reto2.grupo3.model.Opinion.OpinionServiceModel;
 import com.reto2.grupo3.repository.OpinionRepository;
 import com.reto2.grupo3.service.OpinionService;
 import org.springframework.beans.factory.annotation.Autowired;

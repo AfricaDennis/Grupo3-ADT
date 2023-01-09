@@ -1,9 +1,9 @@
 package com.reto2.grupo3.service;
 
-import com.reto2.grupo3.model.Opinion;
+import com.reto2.grupo3.model.Opinion.Opinion;
 import com.reto2.grupo3.model.OpinionPostRequest;
-import com.reto2.grupo3.model.OpinionServiceModel;
-import com.reto2.grupo3.model.Teacher;
+import com.reto2.grupo3.model.Opinion.OpinionServiceModel;
+import com.reto2.grupo3.model.Teacher.Teacher;
 import com.reto2.grupo3.repository.OpinionRepository;
 import com.reto2.grupo3.repository.StudentRepository;
 import com.reto2.grupo3.repository.TeacherRepository;
