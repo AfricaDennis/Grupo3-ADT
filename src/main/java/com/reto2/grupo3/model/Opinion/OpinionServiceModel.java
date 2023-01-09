@@ -4,14 +4,14 @@ import com.reto2.grupo3.model.Student.StudentServiceModel;
 import com.reto2.grupo3.model.Teacher.TeacherServiceModel;
 
 public class OpinionServiceModel {
-    Integer id;
+    private Integer id;
     private TeacherServiceModel teacher;
     private Integer id_teacher;
     private StudentServiceModel student;
     private Integer id_students;
-    String assesment;
-    String date;
-    String opinion;
+    private String assesment;
+    private String date;
+    private String opinion;
 
     public OpinionServiceModel() {
     }

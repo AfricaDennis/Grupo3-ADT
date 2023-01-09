@@ -1,4 +1,4 @@
-package com.reto2.grupo3.model;
+package com.reto2.grupo3.model.Opinion;
 
 import com.reto2.grupo3.model.Student.StudentServiceModel;
 import com.reto2.grupo3.model.Teacher.TeacherServiceModel;

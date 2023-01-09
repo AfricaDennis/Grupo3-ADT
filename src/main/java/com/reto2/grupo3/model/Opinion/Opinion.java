@@ -44,8 +44,8 @@ public class Opinion {
         this.id_teacher = id_teacher;
         this.student = student;
         this.id_students = id_students;
-        this.assesment = assesment;
         this.date = date;
+        this.assesment = assesment;
         this.opinion = opinion;
     }
 

@@ -1,7 +1,7 @@
 package com.reto2.grupo3.service;
 
 import com.reto2.grupo3.model.Opinion.Opinion;
-import com.reto2.grupo3.model.OpinionPostRequest;
+import com.reto2.grupo3.model.Opinion.OpinionPostRequest;
 import com.reto2.grupo3.model.Opinion.OpinionServiceModel;
 import com.reto2.grupo3.model.Teacher.Teacher;
 import com.reto2.grupo3.repository.OpinionRepository;
@@ -36,8 +36,8 @@ public class OpinionServiceImpl implements OpinionService{
                             opinion.getId_teacher(),
                             null,
                             opinion.getId_students(),
-                            opinion.getDate(),
                             opinion.getAssesment(),
+                            opinion.getDate(),
                             opinion.getOpinion()
                     )
             );
@@ -78,7 +78,10 @@ public class OpinionServiceImpl implements OpinionService{
                 null,
                 opinionPostRequest.getId_teacher(),
                 null,
-                opinionPostRequest.getId_student()
+                opinionPostRequest.getId_student(),
+                opinionPostRequest.getDate(),
+                opinionPostRequest.getAssesment(),
+                opinionPostRequest.getOpinion()
         );
 
         Opinion queryOpinion = opinionRepository.save(opinion);
