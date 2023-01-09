@@ -32,11 +32,6 @@ public class FavoriteServiceImpl implements FavoriteService {
         Iterable<Favorite> favorites = favoriteRepository.findAll();
         List<FavoriteServiceModel> response = new ArrayList<FavoriteServiceModel>();
 
-        Teacher teacher = null;
-        TeacherServiceModel teacherServiceModel = null;
-
-
-
         for(Favorite favorite : favorites){
             response.add(
                     new FavoriteServiceModel(
@@ -79,7 +74,8 @@ public class FavoriteServiceImpl implements FavoriteService {
                     teacher.getShift(),
                     teacher.getPhoto(),
                     teacher.getFavorites(),
-                    teacher.getOpinions()
+                    teacher.getOpinions(),
+                    teacher.getDescription()
             );
 
         }
@@ -130,7 +126,8 @@ public class FavoriteServiceImpl implements FavoriteService {
                     teacher.getShift(),
                     teacher.getPhoto(),
                     teacher.getFavorites(),
-                    teacher.getOpinions()
+                    teacher.getOpinions(),
+                    teacher.getDescription()
             );
 
         }

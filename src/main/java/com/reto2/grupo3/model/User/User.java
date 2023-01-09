@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @Table(name="users")
-public class User {
+public class User implements java.io.Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

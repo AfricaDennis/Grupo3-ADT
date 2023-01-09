@@ -13,19 +13,19 @@ public class TeacherServiceModel {
     private String photo;
     private List<Favorite> favorites;
     private List<Opinion> opinions;
+    private  String description;
 
     public TeacherServiceModel() {
     }
 
-    public TeacherServiceModel(String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions) {
-
+    public TeacherServiceModel(String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions, String description) {
         this.location = location;
         this.shift = shift;
         this.photo = photo;
         this.favorites = favorites;
         this.opinions = opinions;
+        this.description = description;
     }
-
 
     public String getLocation() {
         return location;
@@ -67,14 +67,23 @@ public class TeacherServiceModel {
         this.opinions = opinions;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "TeacherServiceModel{" +
-                ", location='" + location + '\'' +
+                "location='" + location + '\'' +
                 ", shift='" + shift + '\'' +
                 ", photo='" + photo + '\'' +
                 ", favorites=" + favorites +
                 ", opinions=" + opinions +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
