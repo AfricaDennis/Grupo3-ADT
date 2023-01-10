@@ -47,6 +47,7 @@ public class TeacherPostRequest  extends User {
         this.description = description;
     }
 
+
     public TeacherPostRequest(String name, String surname, String password, String email, String phone, String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions, String description) {
         super(name, surname, password, email, phone);
         this.location = location;
