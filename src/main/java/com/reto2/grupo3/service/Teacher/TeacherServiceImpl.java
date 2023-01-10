@@ -1,10 +1,9 @@
 package com.reto2.grupo3.service.Teacher;
 
-import com.reto2.grupo3.model.Favorite.Favorite;
+
 import com.reto2.grupo3.model.Teacher.Teacher;
 import com.reto2.grupo3.model.Teacher.TeacherPostRequest;
 import com.reto2.grupo3.model.Teacher.TeacherServiceModel;
-import com.reto2.grupo3.repository.FavoriteRepository;
 import com.reto2.grupo3.repository.TeacherRepository;
 import com.reto2.grupo3.service.Favorite.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +18,6 @@ import java.util.List;
 public class TeacherServiceImpl implements TeacherService {
     @Autowired
     TeacherRepository teacherRepository;
-    @Autowired
-    FavoriteService favoriteService;
 
     @Override
     public List<TeacherServiceModel> getAll() {

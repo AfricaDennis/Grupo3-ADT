@@ -21,8 +21,29 @@ public class User implements java.io.Serializable{
     private String email;
     @Column(length = 13)
     private String phone;
+    @Column
+    private boolean admin;
 
     public User() {
+    }
+
+    public User(Integer id, String name, String surname, String password, String email, String phone, boolean admin) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.admin = admin;
+    }
+
+    public User(String name, String surname, String password, String email, String phone, boolean admin) {
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.admin = admin;
     }
 
     public User(Integer id, String name, String surname, String password, String email, String phone) {
@@ -36,6 +57,13 @@ public class User implements java.io.Serializable{
 
     public User(Integer id, String name, String surname, String email, String phone) {
         this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+    }
+
+    public User(String name, String surname, String email, String phone) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -98,6 +126,13 @@ public class User implements java.io.Serializable{
         this.phone = phone;
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 
     @Override
     public String toString() {
@@ -108,6 +143,7 @@ public class User implements java.io.Serializable{
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
+                ", admin=" + admin +
                 '}';
     }
 }

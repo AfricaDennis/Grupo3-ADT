@@ -25,16 +25,16 @@ public class FavoriteController {
 
     @GetMapping("/favorites/{id}")
     public ResponseEntity<FavoriteServiceModel> getFavoritesById(@PathVariable("id") Integer id){
-        return new ResponseEntity<FavoriteServiceModel>(favoriteService.getFavorite(id), HttpStatus.OK);
+        return new ResponseEntity<>(favoriteService.getFavorite(id), HttpStatus.OK);
     }
 
     @PostMapping(value ="/favorites", consumes = {"application/json"})
     public ResponseEntity<FavoriteServiceModel> createFavorite(@RequestBody FavoritePostRequest favoritePostRequest) {
-        return new ResponseEntity<FavoriteServiceModel>(favoriteService.createFavorite(favoritePostRequest), HttpStatus.CREATED);
+        return new ResponseEntity<>(favoriteService.createFavorite(favoritePostRequest), HttpStatus.CREATED);
     }
     @PutMapping("/favorites/{id}")
     public ResponseEntity<FavoriteServiceModel> updateFavoriteById(@PathVariable("id") Integer id, @RequestBody FavoritePostRequest favoritePostRequest) {
-        return new ResponseEntity<FavoriteServiceModel>(favoriteService.updateFavorite(id, favoritePostRequest), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(favoriteService.updateFavorite(id, favoritePostRequest), HttpStatus.NO_CONTENT);
     }
     @DeleteMapping("/favorites/{id}")
     public ResponseEntity<?> deleteFavoriteById(@PathVariable("id") Integer id) {
