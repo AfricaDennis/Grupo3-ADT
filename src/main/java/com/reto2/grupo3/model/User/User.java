@@ -1,7 +1,4 @@
 package com.reto2.grupo3.model.User;
-
-import com.reto2.grupo3.model.Student.Student;
-import com.reto2.grupo3.model.Teacher.Teacher;
 import jakarta.persistence.*;
 
 @Entity
@@ -21,7 +18,7 @@ public class User implements java.io.Serializable{
     private String email;
     @Column(length = 13)
     private String phone;
-    @Column
+    @Column(length = 10, columnDefinition ="boolean default false")
     private boolean admin;
 
     public User() {

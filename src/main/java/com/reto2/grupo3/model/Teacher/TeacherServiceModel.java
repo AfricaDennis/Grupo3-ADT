@@ -15,6 +15,7 @@ public class TeacherServiceModel extends User{
     private List<Opinion> opinions;
     private  String description;
 
+
     public TeacherServiceModel() {
     }
 
@@ -26,8 +27,6 @@ public class TeacherServiceModel extends User{
         this.opinions = opinions;
         this.description = description;
     }
-
-
 
     public TeacherServiceModel(Integer id, String name, String surname, String password, String email, String phone, String location, String shift, String photo, List<Favorite> favorites, List<Opinion> opinions, String description) {
         super(id, name, surname, password, email, phone);
@@ -55,6 +54,7 @@ public class TeacherServiceModel extends User{
         this.photo = photo;
         this.description = description;
     }
+
 
     public String getLocation() {
         return location;

@@ -19,7 +19,7 @@ public class Topic {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Teacher teacher;
 
-  @Column(name = "name")
+  @Column(length = 50)
     String name;
     @Column(name="id_teacher", insertable = false, updatable = false)
     Integer idTeacher;
