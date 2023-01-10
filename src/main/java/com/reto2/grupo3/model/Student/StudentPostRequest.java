@@ -12,8 +12,8 @@ public class StudentPostRequest extends User {
 
     private List<Opinion> opinions;
 
-    public StudentPostRequest(Integer id, String name, String surname, String email, String phone) {
-        super(id, name, surname, email, phone);
+
+    public StudentPostRequest() {
     }
 
     public StudentPostRequest(List<Favorite> favorites, List<Opinion> opinions) {
