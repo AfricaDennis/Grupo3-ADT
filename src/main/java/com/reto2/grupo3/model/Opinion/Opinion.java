@@ -44,8 +44,18 @@ public class Opinion {
         this.id_teacher = id_teacher;
         this.student = student;
         this.id_students = id_students;
-        this.date = date;
         this.assesment = assesment;
+        this.date = date;
+        this.opinion = opinion;
+    }
+
+    public Opinion( Teacher teacher, Integer id_teacher, Student student, Integer id_students, String assesment, String date, String opinion) {
+        this.teacher = teacher;
+        this.id_teacher = id_teacher;
+        this.student = student;
+        this.id_students = id_students;
+        this.assesment = assesment;
+        this.date = date;
         this.opinion = opinion;
     }
 

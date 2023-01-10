@@ -7,8 +7,13 @@ import java.util.List;
 
 public interface OpinionService {
     List<OpinionServiceModel> getAll();
+
     OpinionServiceModel getOpinion(Integer id);
-    void deleteById(Integer id);
-    OpinionServiceModel create(OpinionPostRequest opinionPostRequest);
-    OpinionServiceModel update(Integer id, OpinionPostRequest opinionPostRequest);
+
+    void deleteOpinionById(Integer id);
+
+    OpinionServiceModel createOpinion(OpinionPostRequest opinionPostRequest);
+
+    OpinionServiceModel updateOpinion(Integer id, OpinionPostRequest opinionPostRequest);
+
 }
