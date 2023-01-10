@@ -10,7 +10,6 @@ import com.reto2.grupo3.model.Teacher.TeacherServiceModel;
 import com.reto2.grupo3.repository.FavoriteRepository;
 import com.reto2.grupo3.repository.StudentRepository;
 import com.reto2.grupo3.repository.TeacherRepository;
-import com.reto2.grupo3.service.Favorite.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,7 +26,6 @@ public class FavoriteServiceImpl implements FavoriteService {
     TeacherRepository teacherRepository;
     @Autowired
     StudentRepository studentRepository;
-
     @Override
     public List<FavoriteServiceModel> getAll() {
         Iterable<Favorite> favorites = favoriteRepository.findAll();

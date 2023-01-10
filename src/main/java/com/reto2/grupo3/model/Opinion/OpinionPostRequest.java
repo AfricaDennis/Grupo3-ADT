@@ -26,13 +26,6 @@ public class OpinionPostRequest {
         this.opinion = opinion;
     }
 
-    public OpinionPostRequest(TeacherServiceModel teacher, Integer id_teacher, StudentServiceModel student, Integer id_student) {
-        this.teacher = teacher;
-        this.id_teacher = id_teacher;
-        this.student = student;
-        this.id_student = id_student;
-    }
-
     public Integer getId() {
         return id;
     }

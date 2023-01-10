@@ -132,6 +132,7 @@ public class OpinionServiceImpl implements OpinionService{
         }
         Student student = null;
         StudentServiceModel studentServiceModel = null;
+
         if (opinionPostRequest.getId_student() != null) {
             student = studentRepository.findById(opinionPostRequest.getId_student()).orElseThrow(
                     () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el alumno")

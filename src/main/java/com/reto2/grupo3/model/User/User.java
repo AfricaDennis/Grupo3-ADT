@@ -21,7 +21,7 @@ public class User implements java.io.Serializable{
     private String email;
     @Column(length = 13)
     private String phone;
-    @Column
+    @Column(length = 10, columnDefinition = "boolean default false")
     private boolean admin;
 
     public User() {
