@@ -88,7 +88,49 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentServiceModel updateStudent(Integer id, StudentPostRequest studentPostRequest) {
-        return null;
+        Student student = studentRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el profesor")
+        );
+
+        if(studentPostRequest.getId() != null){
+            student.setId(studentPostRequest.getId());
+        }
+        if(studentPostRequest.getName() != null){
+            student.setName(studentPostRequest.getName());
+        }
+        if(studentPostRequest.getSurname() != null){
+            student.setSurname(studentPostRequest.getSurname());
+        }
+        if(studentPostRequest.getPassword() != null){
+            student.setPassword(studentPostRequest.getPassword());
+        }
+        if(studentPostRequest.getEmail() != null){
+            student.setEmail(studentPostRequest.getEmail());
+        }
+        if(studentPostRequest.getPhone() != null){
+            student.setPhone(studentPostRequest.getPhone());
+        }
+        if(studentPostRequest.getFavorites() != null){
+            student.setFavorites(studentPostRequest.getFavorites());
+        }
+        if(studentPostRequest.getOpinions() != null){
+            student.setOpinions(studentPostRequest.getOpinions());
+        }
+
+
+        Student queryStudent = studentRepository.save(student);
+        StudentServiceModel response = new StudentServiceModel(
+                queryStudent.getId(),
+                queryStudent.getName(),
+                queryStudent.getSurname(),
+                queryStudent.getPassword(),
+                queryStudent.getEmail(),
+                queryStudent.getPhone(),
+                queryStudent.getFavorites(),
+                queryStudent.getOpinions()
+        );
+
+        return response;
     }
 
     @Override
