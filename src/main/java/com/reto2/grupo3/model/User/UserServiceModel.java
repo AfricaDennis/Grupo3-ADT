@@ -14,6 +14,8 @@ public class UserServiceModel {
     private StudentServiceModel student;
     private TeacherServiceModel teacher;
 
+    private boolean admin;
+
     public UserServiceModel() {
     }
 
@@ -36,6 +38,24 @@ public class UserServiceModel {
         this.phone = phone;
         this.student = student;
         this.teacher = teacher;
+    }
+
+    public UserServiceModel(Integer id, String name, String surname, String password, String email, String phone, boolean admin) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.admin = admin;
+    }
+
+    public UserServiceModel(String name, String surname, String password, String email, String phone) {
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
     }
 
     public Integer getId() {
@@ -100,6 +120,14 @@ public class UserServiceModel {
 
     public void setTeacher(TeacherServiceModel teacher) {
         this.teacher = teacher;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     @Override
