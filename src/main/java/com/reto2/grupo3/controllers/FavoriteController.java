@@ -24,7 +24,7 @@ public class FavoriteController {
     }
 
     @GetMapping("/favorites/{id}")
-    public ResponseEntity<FavoriteServiceModel> getFavoritesById(@PathVariable("id") Integer id){
+    public ResponseEntity<FavoriteServiceModel> getFavoriteById(@PathVariable("id") Integer id){
         return new ResponseEntity<>(favoriteService.getFavorite(id), HttpStatus.OK);
     }
 
