@@ -49,7 +49,7 @@ public class Teacher extends User{
         this.opinions = opinions;
     }
 
-    public Teacher(Integer id, String name, String surname, String password, String email, String location, String shift, String photo, String description, List<Favorite> favorites, List<Opinion> opinions, String teacherPostRequestDescription) {
+    public Teacher(String location, String shift, String photo, String description, List<Favorite> favorites, List<Opinion> opinions, String teacherPostRequestDescription) {
         this.location = location;
         this.shift = shift;
         this.photo = photo;
@@ -58,6 +58,7 @@ public class Teacher extends User{
         this.opinions = opinions;
     }
 
+
     public Teacher(Integer id, String name, String surname, String password, String email, String phone, String location, String shift, String photo, String description, List<Favorite> favorites, List<Opinion> opinions) {
         super(id, name, surname, password, email, phone);
         this.location = location;
@@ -65,6 +66,15 @@ public class Teacher extends User{
         this.photo = photo;
         this.description = description;
         this.favorites = favorites;
+        this.opinions = opinions;
+    }
+
+    public Teacher(Integer id, String name, String surname, String password, String email, String phone, String location, String shift, String photo, String description, List<Opinion> opinions) {
+        super(id, name, surname, password, email, phone);
+        this.location = location;
+        this.shift = shift;
+        this.photo = photo;
+        this.description = description;
         this.opinions = opinions;
     }
 

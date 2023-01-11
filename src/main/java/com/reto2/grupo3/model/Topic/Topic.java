@@ -19,12 +19,25 @@ public class Topic {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Teacher teacher;
 
-  @Column(name = "name")
+  @Column(length = 50)
     String name;
     @Column(name="id_teacher", insertable = false, updatable = false)
     Integer idTeacher;
 
     public Topic() {
+    }
+
+    public Topic(Teacher teacher, String name, Integer idTeacher) {
+        this.teacher = teacher;
+        this.name = name;
+        this.idTeacher = idTeacher;
+    }
+
+    public Topic(Integer id, Teacher teacher, String name, Integer idTeacher) {
+        this.id = id;
+        this.teacher = teacher;
+        this.name = name;
+        this.idTeacher = idTeacher;
     }
 
     public Integer getId() {
