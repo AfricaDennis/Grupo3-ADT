@@ -23,22 +23,22 @@ public class OpinionController {
         return new ResponseEntity<>(opinionService.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/opinion/{id}")
+    @GetMapping("/opinions/{id}")
     public ResponseEntity<OpinionServiceModel> getOpinionsById(@PathVariable("id") Integer id){
-        return new ResponseEntity<OpinionServiceModel>(opinionService.getOpinion(id), HttpStatus.OK);
+        return new ResponseEntity<>(opinionService.getOpinion(id), HttpStatus.OK);
     }
 
     @PostMapping(value ="/opinions", consumes = {"application/json"})
     public ResponseEntity<OpinionServiceModel> createOpinion(@RequestBody OpinionPostRequest opinionPostRequest){
-        return new ResponseEntity<OpinionServiceModel>(opinionService.createOpinion(opinionPostRequest),HttpStatus.CREATED);
+        return new ResponseEntity<>(opinionService.createOpinion(opinionPostRequest),HttpStatus.CREATED);
     }
 
-    @PutMapping("/opinion/{id}")
+    @PutMapping("/opinions/{id}")
     public ResponseEntity<OpinionServiceModel> updateOpinionById(@PathVariable("id") Integer id, @RequestBody OpinionPostRequest opinionPostRequest){
-        return new ResponseEntity<OpinionServiceModel>(opinionService.updateOpinion(id, opinionPostRequest), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(opinionService.updateOpinion(id, opinionPostRequest), HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/opinion/{id}")
+    @DeleteMapping("/opinions/{id}")
     public ResponseEntity<?> deleteOpinionByID(@PathVariable("id") Integer id) {
         try{
             opinionService.deleteOpinionById(id);

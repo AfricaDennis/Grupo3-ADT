@@ -106,7 +106,6 @@ public class FavoriteServiceImpl implements FavoriteService {
 
         }
         StudentServiceModel studentServiceModel = null;
-        System.out.println(favoritePostRequest.getId_student());
         if (favoritePostRequest.getId_student() != null) {
             studentServiceModel = studentService.getStudent(favoritePostRequest.getId_student());
         }
