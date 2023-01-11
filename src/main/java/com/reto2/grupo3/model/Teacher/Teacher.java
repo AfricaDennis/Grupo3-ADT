@@ -58,6 +58,7 @@ public class Teacher extends User{
         this.opinions = opinions;
     }
 
+
     public Teacher(Integer id, String name, String surname, String password, String email, String phone, String location, String shift, String photo, String description, List<Favorite> favorites, List<Opinion> opinions) {
         super(id, name, surname, password, email, phone);
         this.location = location;
