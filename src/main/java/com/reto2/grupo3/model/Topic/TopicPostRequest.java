@@ -2,25 +2,24 @@ package com.reto2.grupo3.model.Topic;
 
 import com.reto2.grupo3.model.Teacher.TeacherServiceModel;
 
-public class TopicServiceModel {
-
+public class TopicPostRequest {
     private Integer id;
-    private TeacherServiceModel teacher;
     private String name;
+    private TeacherServiceModel teacher;
     private Integer id_teacher;
-
-    public TopicServiceModel() {
+    public TopicPostRequest() {
     }
-    public TopicServiceModel(Integer id, TeacherServiceModel teacher, String name, Integer id_teacher) {
+
+    public TopicPostRequest(Integer id, String name, TeacherServiceModel teacher, Integer id_teacher) {
         this.id = id;
-        this.teacher = teacher;
         this.name = name;
+        this.teacher = teacher;
         this.id_teacher = id_teacher;
     }
 
-    public TopicServiceModel(TeacherServiceModel teacher, String name, Integer id_teacher) {
-        this.teacher = teacher;
+    public TopicPostRequest(String name, TeacherServiceModel teacher, Integer id_teacher) {
         this.name = name;
+        this.teacher = teacher;
         this.id_teacher = id_teacher;
     }
 
@@ -32,20 +31,20 @@ public class TopicServiceModel {
         this.id = id;
     }
 
-    public TeacherServiceModel getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(TeacherServiceModel teacher) {
-        this.teacher = teacher;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public TeacherServiceModel getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(TeacherServiceModel teacher) {
+        this.teacher = teacher;
     }
 
     public Integer getId_teacher() {
@@ -58,10 +57,10 @@ public class TopicServiceModel {
 
     @Override
     public String toString() {
-        return "TopicServiceModel{" +
+        return "TopicPostRequest{" +
                 "id=" + id +
-                ", teacher=" + teacher +
                 ", name='" + name + '\'' +
+                ", teacher=" + teacher +
                 ", id_teacher=" + id_teacher +
                 '}';
     }

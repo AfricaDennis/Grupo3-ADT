@@ -27,6 +27,19 @@ public class Topic {
     public Topic() {
     }
 
+    public Topic(Teacher teacher, String name, Integer idTeacher) {
+        this.teacher = teacher;
+        this.name = name;
+        this.idTeacher = idTeacher;
+    }
+
+    public Topic(Integer id, Teacher teacher, String name, Integer idTeacher) {
+        this.id = id;
+        this.teacher = teacher;
+        this.name = name;
+        this.idTeacher = idTeacher;
+    }
+
     public Integer getId() {
         return id;
     }
