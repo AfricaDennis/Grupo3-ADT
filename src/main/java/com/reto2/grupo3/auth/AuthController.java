@@ -59,7 +59,7 @@ public class AuthController {
         // TODO solo esta creado en el caso de que funcione. Si no es posible que de 500
         //User user = new User(request.getEmail(), request.getPassword());
         //return new ResponseEntity<Integer>(userService.create(user), HttpStatus.CREATED);
-        User user = new User(request.getEmail(), request.getPassword());
+        User user = new User(request.getName(), request.getSurname(), request.getPassword(), request.getEmail(), request.getPhone());
         try{
             userService.signUp(user);
         }catch (UserCantCreateException e){

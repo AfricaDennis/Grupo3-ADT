@@ -1,5 +1,6 @@
 package com.reto2.grupo3.model.User;
 import jakarta.persistence.*;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,6 +21,7 @@ public class User implements java.io.Serializable, UserDetails {
     private String surname;
     @Column(length = 5000)
     private String password;
+    @UniqueElements
     @Column(length = 50)
     private String email;
     @Column(length = 13)

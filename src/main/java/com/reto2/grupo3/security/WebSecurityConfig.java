@@ -40,6 +40,7 @@ public class WebSecurityConfig {
 		http.authorizeHttpRequests(
 			(authz) -> authz
 					.requestMatchers("/api/auth/**").permitAll()
+					.requestMatchers("/api/auth/login").permitAll()
 					.anyRequest().authenticated()
 		);
 
