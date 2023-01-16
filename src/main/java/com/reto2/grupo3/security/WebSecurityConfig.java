@@ -36,17 +36,18 @@ public class WebSecurityConfig {
 		
 		http.csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		
+
 		http.authorizeHttpRequests(
 			(authz) -> authz
-					//.requestMatchers("/api/auth/**").permitAll()
+					.requestMatchers("/api/auth/**").permitAll()
 					.anyRequest().authenticated()
 		);
+
 
 		http.exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler());
 		http.exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint());
 
-		//http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 		
 		return http.build();
 	}
