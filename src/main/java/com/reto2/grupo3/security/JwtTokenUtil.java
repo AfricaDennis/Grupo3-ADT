@@ -2,14 +2,18 @@ package com.reto2.grupo3.security;
 
 
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import com.reto2.grupo3.model.User.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
-import com.reto2.grupo3.model.User.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -30,16 +34,19 @@ public class JwtTokenUtil {
 	// con la siguiente linea asigna a la SECRET_KEY nuestro app.jwt.secret del application.properties
 	@Value("${app.jwt.secret}")
 	private String SECRET_KEY;
+
+	private static final String USER_ID_CLAIM = "userId";
 	
 	public String generateAccessToken(User user) {
 		// cuando generamos el token podemos meter campos custom que nos puedan ser utiles mas adelante.
 		return Jwts.builder()
-				.setSubject(String.format("%s,%s", user.getId(), user.getEmail()))
+				.setSubject(String.format("%s", user.getEmail()))
 				.setIssuer("ADTDAM")
 				.setIssuedAt(new Date())
 				.setExpiration(new Date(System.currentTimeMillis() + EXPIRE_DURATION))
-				// .claim("userId", user.getId()) // podriamos meter datos custom, u objetos custom. ojo con meter "user" por que tiene la password en el modelo 
-				// y passwords no queremos enviar ni devolver
+
+				.claim(USER_ID_CLAIM, user.getId())
+
 				.signWith(SignatureAlgorithm.HS512, SECRET_KEY)
 				.compact();
 	}
@@ -66,11 +73,23 @@ public class JwtTokenUtil {
 	public String getSubject(String token) {
 		return parseClaims(token).getSubject();
 	}
+
+	public Integer getUserId(String token){
+		Claims claims = parseClaims(token);
+		return (Integer) claims.get(USER_ID_CLAIM);
+	}
 	
 	private Claims parseClaims(String token) {
 		return Jwts.parser()
 				.setSigningKey(SECRET_KEY)
 				.parseClaimsJws(token)
 				.getBody();
+	}
+
+	public static <T> List<T> jsonArrayToList(Object json, Class<T> elementClass) throws IOException{
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jsonString = objectMapper.writeValueAsString(json);
+		CollectionType listType = objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, elementClass);
+		return objectMapper.readValue(jsonString,listType);
 	}
 }

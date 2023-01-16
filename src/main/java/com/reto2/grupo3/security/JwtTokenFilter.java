@@ -2,10 +2,10 @@ package com.reto2.grupo3.security;
 
 import java.io.IOException;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -73,9 +73,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 	// genera los detalles del usuario a partir del jwt
 	private UserDetails getUserDetails(String token) {
 		User userDetails = new User();
-		String[] jwtSubject = jwtUtil.getSubject(token).split(",");
-		userDetails.setId(Integer.parseInt(jwtSubject[0]));
-		userDetails.setEmail(jwtSubject[1]);
+		userDetails.setId(jwtUtil.getUserId(token));
+		userDetails.setEmail(jwtUtil.getSubject(token));
 		return userDetails;
 	}
 }

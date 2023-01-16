@@ -3,7 +3,9 @@ import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -79,7 +81,10 @@ public class User implements java.io.Serializable, UserDetails {
         this.phone = phone;
     }
 
-
+    public User( String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     public Integer getId() {
         return id;
@@ -107,7 +112,9 @@ public class User implements java.io.Serializable, UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        final List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+
+        return authorities;
     }
 
     public String getPassword() {
@@ -116,22 +123,22 @@ public class User implements java.io.Serializable, UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return email;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
