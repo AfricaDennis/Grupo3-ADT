@@ -2,6 +2,7 @@ package com.reto2.grupo3.model.User;
 import jakarta.persistence.*;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
@@ -21,8 +22,8 @@ public class User implements java.io.Serializable, UserDetails {
     private String surname;
     @Column(length = 5000)
     private String password;
-    @UniqueElements
-    @Column(length = 50)
+    // @UniqueElements
+    @Column(length = 50, unique = true)
     private String email;
     @Column(length = 13)
     private String phone;
@@ -115,6 +116,11 @@ public class User implements java.io.Serializable, UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         final List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        if (admin) {
+            authorities.add(new SimpleGrantedAuthority("ADMIN"));
+        } else {
+            authorities.add(new SimpleGrantedAuthority("USER"));
+        }
 
         return authorities;
     }
@@ -145,7 +151,7 @@ public class User implements java.io.Serializable, UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     public void setPassword(String password) {

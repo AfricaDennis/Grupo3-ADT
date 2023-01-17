@@ -65,6 +65,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
 	private void setAuthenticationContext(String token, HttpServletRequest request) {
 		UserDetails userDetails = getUserDetails(token);
+
 		UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 		authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -75,6 +76,10 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 		User userDetails = new User();
 		userDetails.setId(jwtUtil.getUserId(token));
 		userDetails.setEmail(jwtUtil.getSubject(token));
+		userDetails.setAdmin(jwtUtil.getIsAdmin(token));
+
+		// si es admin: meterle rol admin y sino meterle rol user
+
 		return userDetails;
 	}
 }

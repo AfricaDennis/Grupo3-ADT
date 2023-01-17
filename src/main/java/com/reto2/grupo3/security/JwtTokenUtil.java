@@ -36,6 +36,7 @@ public class JwtTokenUtil {
 	private String SECRET_KEY;
 
 	private static final String USER_ID_CLAIM = "userId";
+	private static final String USER_ADMIN_CLAIM = "isAdmin";
 	
 	public String generateAccessToken(User user) {
 		// cuando generamos el token podemos meter campos custom que nos puedan ser utiles mas adelante.
@@ -46,6 +47,7 @@ public class JwtTokenUtil {
 				.setExpiration(new Date(System.currentTimeMillis() + EXPIRE_DURATION))
 
 				.claim(USER_ID_CLAIM, user.getId())
+				.claim(USER_ADMIN_CLAIM, user.isAdmin())
 
 				.signWith(SignatureAlgorithm.HS512, SECRET_KEY)
 				.compact();
@@ -78,7 +80,12 @@ public class JwtTokenUtil {
 		Claims claims = parseClaims(token);
 		return (Integer) claims.get(USER_ID_CLAIM);
 	}
-	
+
+	public boolean getIsAdmin(String token){
+		Claims claims = parseClaims(token);
+		return (boolean) claims.get(USER_ADMIN_CLAIM);
+	}
+
 	private Claims parseClaims(String token) {
 		return Jwts.parser()
 				.setSigningKey(SECRET_KEY)
