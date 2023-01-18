@@ -1,5 +1,7 @@
 package com.reto2.grupo3.model.User;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,15 +19,18 @@ public class User implements java.io.Serializable, UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(length = 50)
+    @Size(min = 3)
     private String name;
     @Column(length = 50)
+    @Pattern(regexp="\\w*[\" \"]\\w*")
     private String surname;
     @Column(length = 5000)
     private String password;
-    // @UniqueElements
     @Column(length = 50, unique = true)
+    @Pattern(regexp="^[^@]+@[^@]+\\.[a-zA-Z]{2,}$")
     private String email;
     @Column(length = 13)
+    @Pattern(regexp="(6|7)([0-9]){8}")
     private String phone;
     @Column(length = 10, columnDefinition ="boolean default false")
     private boolean admin;
