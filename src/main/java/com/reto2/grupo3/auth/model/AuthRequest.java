@@ -6,6 +6,7 @@ public class AuthRequest {
     private String phone;
     private String surname;
     private String password;
+    private boolean admin;
 
     public AuthRequest() {}
 
@@ -20,6 +21,14 @@ public class AuthRequest {
         this.phone = phone;
         this.surname = surname;
         this.password = password;
+    }
+    public AuthRequest(String email, String name, String phone, String surname, String password,boolean admin) {
+        this.email = email;
+        this.name = name;
+        this.phone = phone;
+        this.surname = surname;
+        this.password = password;
+        this.admin = admin;
     }
 
     public String getEmail() {
@@ -60,6 +69,14 @@ public class AuthRequest {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     @Override

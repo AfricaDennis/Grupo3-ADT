@@ -3,6 +3,7 @@ package com.reto2.grupo3.auth.model;
 public class AuthResponse {
     private Integer id;
     private String email;
+    private boolean admin;
     private String accesToken;
 
     public AuthResponse() {}
@@ -12,6 +13,13 @@ public class AuthResponse {
         this.id = id;
         this.email = email;
         this.accesToken = accesToken;
+    }
+    public AuthResponse(Integer id, String email, String accesToken,boolean admin) {
+        super();
+        this.id = id;
+        this.email = email;
+        this.accesToken = accesToken;
+        this.admin = admin;
     }
 
     public Integer getId() {
@@ -36,6 +44,13 @@ public class AuthResponse {
 
     public void setAccesToken(String accesToken) {
         this.accesToken = accesToken;
+    }
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     @Override

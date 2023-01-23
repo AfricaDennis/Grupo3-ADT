@@ -95,6 +95,12 @@ public class User implements java.io.Serializable, UserDetails {
         this.password = password;
     }
 
+    public User( String email, String password,boolean admin) {
+        this.email = email;
+        this.password = password;
+        this.admin = admin;
+    }
+
     public Integer getId() {
         return id;
     }

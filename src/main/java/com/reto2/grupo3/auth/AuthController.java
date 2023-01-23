@@ -44,7 +44,7 @@ public class AuthController {
 
             User user = (User) authentication.getPrincipal();
             String accessToken = jwtUtil.generateAccessToken(user);
-            AuthResponse response = new AuthResponse(user.getId(), user.getEmail(), accessToken);
+            AuthResponse response = new AuthResponse(user.getId(), user.getEmail(), accessToken, user.isAdmin());
 
             return ResponseEntity.ok().body(response);
 
@@ -59,7 +59,7 @@ public class AuthController {
         // TODO solo esta creado en el caso de que funcione. Si no es posible que de 500
         //User user = new User(request.getEmail(), request.getPassword());
         //return new ResponseEntity<Integer>(userService.create(user), HttpStatus.CREATED);
-        User user = new User(request.getName(), request.getSurname(), request.getPassword(), request.getEmail(), request.getPhone());
+        User user = new User(request.getName(), request.getSurname(), request.getPassword(), request.getEmail(), request.getPhone(),request.isAdmin());
         try{
             userService.signUp(user);
         }catch (UserCantCreateException e){
@@ -72,24 +72,6 @@ public class AuthController {
     public ResponseEntity<?> getUserInfo(Authentication authentication) {
         User userDetails = (User) authentication.getPrincipal();
         return ResponseEntity.ok().body(userDetails);
-    }
-
-    @PostMapping("/authadmin/login")
-    public ResponseEntity<?> loginadmin(@RequestBody AuthRequest request) {
-        try {
-            Authentication authentication = authManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
-            );
-
-            User user = (User) authentication.getPrincipal();
-            String accessToken = jwtUtil.generateAccessToken(user);
-            AuthResponse response = new AuthResponse(user.getId(), user.getEmail(), accessToken);
-
-            return ResponseEntity.ok().body(response);
-
-        } catch (BadCredentialsException ex) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-        }
     }
 
 }
