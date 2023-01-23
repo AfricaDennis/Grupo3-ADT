@@ -40,6 +40,7 @@ public class WebSecurityConfig {
 		http.authorizeHttpRequests(
 			(authz) -> authz
 					.requestMatchers("/api/auth/**").permitAll()
+					.requestMatchers("/api/authadmin/**").hasAnyAuthority("ADMIN")
 					//.requestMatchers("/api/**").hasAnyAuthority("ADMIN")
 					//.requestMatchers("/api/students/**").permitAll()
 

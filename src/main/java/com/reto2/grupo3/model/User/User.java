@@ -23,6 +23,7 @@ public class User implements java.io.Serializable, UserDetails {
     private String name;
     @Column(length = 50)
     @Pattern(regexp="\\w*[\" \"]\\w*")
+//    ^/[ñ]\w*
     private String surname;
     @Column(length = 5000)
     private String password;

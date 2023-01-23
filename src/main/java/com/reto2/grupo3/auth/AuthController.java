@@ -74,5 +74,22 @@ public class AuthController {
         return ResponseEntity.ok().body(userDetails);
     }
 
+    @PostMapping("/authadmin/login")
+    public ResponseEntity<?> loginadmin(@RequestBody AuthRequest request) {
+        try {
+            Authentication authentication = authManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+            );
+
+            User user = (User) authentication.getPrincipal();
+            String accessToken = jwtUtil.generateAccessToken(user);
+            AuthResponse response = new AuthResponse(user.getId(), user.getEmail(), accessToken);
+
+            return ResponseEntity.ok().body(response);
+
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
 
 }
