@@ -42,7 +42,7 @@ public class WebSecurityConfig {
 					.requestMatchers("/api/auth/**").permitAll()
 					.requestMatchers("/api/authadmin/**").hasAnyAuthority("ADMIN")
 					//.requestMatchers("/api/**").hasAnyAuthority("ADMIN")
-					//.requestMatchers("/api/students/**").permitAll()
+					.requestMatchers("/api/teachers/**").permitAll()
 
 					.anyRequest().authenticated()
 		);
