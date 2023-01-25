@@ -1,5 +1,7 @@
 package com.reto2.grupo3.service.User;
 
+import com.reto2.grupo3.auth.exception.UserCantCreateException;
+import com.reto2.grupo3.model.User.User;
 import com.reto2.grupo3.model.User.UserPostRequest;
 import com.reto2.grupo3.model.User.UserServiceModel;
 
@@ -11,4 +13,5 @@ public interface UserService {
     UserServiceModel createUser(UserPostRequest userPostRequest);
     UserServiceModel updateUser(Integer id, UserPostRequest userPostRequest);
     void deleteUserById(Integer id);
+    User signUp(User user) throws UserCantCreateException;
 }

@@ -11,15 +11,15 @@ public class UserServiceModel {
     private String password;
     private String email;
     private String phone;
-    private StudentServiceModel student;
-    private TeacherServiceModel teacher;
+    private boolean student;
+    private boolean teacher;
 
     private boolean admin;
 
     public UserServiceModel() {
     }
 
-    public UserServiceModel(Integer id, String name, String surname, String password, String email, String phone, StudentServiceModel student, TeacherServiceModel teacher) {
+    public UserServiceModel(Integer id, String name, String surname, String password, String email, String phone, boolean student, boolean teacher) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -30,7 +30,7 @@ public class UserServiceModel {
         this.teacher = teacher;
     }
 
-    public UserServiceModel(String name, String surname, String password, String email, String phone, StudentServiceModel student, TeacherServiceModel teacher) {
+    public UserServiceModel(String name, String surname, String password, String email, String phone, boolean student, boolean teacher) {
         this.name = name;
         this.surname = surname;
         this.password = password;
@@ -106,19 +106,19 @@ public class UserServiceModel {
         this.phone = phone;
     }
 
-    public StudentServiceModel getStudent() {
+    public boolean getStudent() {
         return student;
     }
 
-    public void setStudent(StudentServiceModel student) {
+    public void setStudent(boolean student) {
         this.student = student;
     }
 
-    public TeacherServiceModel getTeacher() {
+    public boolean getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(TeacherServiceModel teacher) {
+    public void setTeacher(boolean teacher) {
         this.teacher = teacher;
     }
 

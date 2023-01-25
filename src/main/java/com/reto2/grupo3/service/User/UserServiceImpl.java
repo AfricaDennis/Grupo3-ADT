@@ -1,19 +1,25 @@
 package com.reto2.grupo3.service.User;
 
+import com.reto2.grupo3.auth.exception.UserCantCreateException;
 import com.reto2.grupo3.model.User.User;
 import com.reto2.grupo3.model.User.UserPostRequest;
 import com.reto2.grupo3.model.User.UserServiceModel;
 import com.reto2.grupo3.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class UserServiceImpl implements UserService{
+@Service("userDetailsService")
+public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
@@ -117,5 +123,25 @@ public class UserServiceImpl implements UserService{
     @Override
     public void deleteUserById(Integer id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public User signUp(User user) throws UserCantCreateException {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String password = passwordEncoder.encode(user.getPassword());
+        user.setPassword(password);
+        try {
+            return userRepository.save(user);
+        }
+        catch (DataAccessException e){
+            throw new UserCantCreateException(e.getMessage());
+        }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByEmail(username)
+                .orElseThrow(
+                        () -> new UsernameNotFoundException("User " + username + " not found"));
     }
 }
