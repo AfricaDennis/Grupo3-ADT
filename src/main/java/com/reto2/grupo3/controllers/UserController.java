@@ -14,8 +14,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+
+
 @RestController
 @RequestMapping("api")
+@CrossOrigin
 public class UserController {
     @Autowired
     private UserService userService;
@@ -25,22 +28,22 @@ public class UserController {
         return new ResponseEntity<>(userService.getALl(), HttpStatus.OK);
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<UserServiceModel> getUserById(@PathVariable("id") Integer id){
         return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/user", consumes = {"application/json"})
+    @PostMapping(value = "/users", consumes = {"application/json"})
     public ResponseEntity<UserServiceModel> createUser(@RequestBody UserPostRequest userPostRequest){
         return new ResponseEntity<>(userService.createUser(userPostRequest), HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/users/{id}")
     public ResponseEntity<UserServiceModel> updateUserById(@PathVariable("id") Integer id, @RequestBody UserPostRequest userPostRequest){
         return new ResponseEntity<>(userService.updateUser(id,userPostRequest), HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("user/{id}")
+    @DeleteMapping("users/{id}")
     public ResponseEntity<?> deleteUserById(@PathVariable("id") Integer id){
         try {
             userService.deleteUserById(id);

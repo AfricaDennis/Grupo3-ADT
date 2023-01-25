@@ -6,7 +6,7 @@ import com.reto2.grupo3.model.User.User;
 
 import java.util.List;
 
-public class StudentServiceModel extends User{
+public class StudentServiceModel extends User {
     private List<Favorite> favorites;
     private List<Opinion> opinions;
 
