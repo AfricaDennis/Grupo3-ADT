@@ -7,8 +7,11 @@ import com.reto2.grupo3.auth.exception.UserCantCreateException;
 import com.reto2.grupo3.auth.model.AuthRequest;
 import com.reto2.grupo3.auth.model.AuthResponse;
 import com.reto2.grupo3.model.User.User;
+import com.reto2.grupo3.repository.UserRepository;
 import com.reto2.grupo3.security.JwtTokenUtil;
 import com.reto2.grupo3.service.User.UserService;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +19,23 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+
+import java.security.SecureRandom;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 @RestController
 @RequestMapping("api")
@@ -73,5 +88,6 @@ public class AuthController {
         User userDetails = (User) authentication.getPrincipal();
         return ResponseEntity.ok().body(userDetails);
     }
+
 
 }

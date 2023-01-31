@@ -8,6 +8,12 @@ public class AuthResponse {
 
     public AuthResponse() {}
 
+    public AuthResponse(Integer id, String email) {
+        super();
+        this.id = id;
+        this.email = email;
+    }
+
     public AuthResponse(Integer id, String email, String accesToken) {
         super();
         this.id = id;
