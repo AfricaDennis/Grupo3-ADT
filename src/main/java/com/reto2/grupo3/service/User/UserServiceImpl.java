@@ -99,7 +99,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
 
         if(userPostRequest.getPassword() != null){
-            user.setPassword(userPostRequest.getPassword());
+            String contraseña = userPostRequest.getPassword();
+            System.out.println(contraseña);
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            String randomPassEncoded = passwordEncoder.encode(userPostRequest.getPassword());
+            user.setPassword(randomPassEncoded);
         }
 
         if(userPostRequest.getEmail() != null){
@@ -173,6 +177,23 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 usuarioAlreadyExists.getPassword(),
                 usuarioAlreadyExists.getEmail(),
                 usuarioAlreadyExists.getPhone()
+        );
+        return response;
+    }
+
+    @Override
+    public UserServiceModel updateUserPass(Integer id, UserPostRequest userPostRequest) {
+        User user = userRepository.findById(id).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.CONFLICT, "No existe el usuario")
+        );
+
+        if(userPostRequest.getPassword() != null){
+            user.setPassword(userPostRequest.getPassword());
+        }
+
+        User queryUser = userRepository.save(user);
+        UserServiceModel response = new UserServiceModel(
+                queryUser.getSurname()
         );
         return response;
     }

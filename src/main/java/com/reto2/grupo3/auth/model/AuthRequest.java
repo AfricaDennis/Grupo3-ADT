@@ -19,6 +19,7 @@ public class AuthRequest {
         this.email = email;
     }
 
+
     public AuthRequest(String email, String name, String phone, String surname, String password) {
         this.email = email;
         this.name = name;

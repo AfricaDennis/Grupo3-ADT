@@ -7,6 +7,7 @@ import com.reto2.grupo3.auth.exception.UserCantCreateException;
 import com.reto2.grupo3.auth.model.AuthRequest;
 import com.reto2.grupo3.auth.model.AuthResponse;
 import com.reto2.grupo3.model.User.User;
+import com.reto2.grupo3.model.User.UserPostRequest;
 import com.reto2.grupo3.repository.UserRepository;
 import com.reto2.grupo3.security.JwtTokenUtil;
 import com.reto2.grupo3.service.User.UserService;
@@ -87,6 +88,23 @@ public class AuthController {
     public ResponseEntity<?> getUserInfo(Authentication authentication) {
         User userDetails = (User) authentication.getPrincipal();
         return ResponseEntity.ok().body(userDetails);
+    }
+
+    @PostMapping("/auth/cambiopass/{email}/{password}")
+    public ResponseEntity<?> actualizarpass(@PathVariable("email") String email,@PathVariable("password") String password, @RequestBody UserPostRequest userPostRequest) {
+        try {
+            Authentication authentication = authManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(email, password)
+            );
+
+            User user = (User) authentication.getPrincipal();
+            AuthResponse response = new AuthResponse(user.getId(), user.getEmail());
+
+            return new ResponseEntity<>(userService.updateUser(response.getId(),userPostRequest), HttpStatus.NO_CONTENT);
+
+        } catch (BadCredentialsException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
 

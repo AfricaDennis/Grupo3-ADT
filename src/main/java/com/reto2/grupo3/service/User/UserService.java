@@ -16,4 +16,5 @@ public interface UserService {
     void deleteUserById(Integer id);
     User signUp(User user) throws UserCantCreateException;
     UserServiceModel enviarEmail(String email);
+    UserServiceModel updateUserPass(Integer id, UserPostRequest userPostRequest);
 }
