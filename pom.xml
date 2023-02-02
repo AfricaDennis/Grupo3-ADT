@@ -38,10 +38,16 @@
 		</dependency>
 
 		<!-- Swagger -->
+<!--		<dependency>-->
+<!--			<groupId>org.springdoc</groupId>-->
+<!--			<artifactId>springdoc-openapi-ui</artifactId>-->
+<!--			<version>1.6.4</version>-->
+<!--		</dependency>-->
+
 		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.4</version>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-hibernate-validations</artifactId>
+			<version>1.5.1</version>
 		</dependency>
 
 <!--		<dependency>-->

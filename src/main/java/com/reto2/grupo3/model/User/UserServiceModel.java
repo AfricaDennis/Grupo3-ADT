@@ -58,6 +58,10 @@ public class UserServiceModel {
         this.phone = phone;
     }
 
+    public UserServiceModel(String password) {
+        this.password = password;
+    }
+
     public Integer getId() {
         return id;
     }

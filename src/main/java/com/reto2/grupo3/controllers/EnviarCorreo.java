@@ -97,7 +97,7 @@ public class EnviarCorreo {
         Transport.send(message);
     }
 
-    String generateRandomPassword(int len) {
+    public String generateRandomPassword(int len) {
         // Rango ASCII – alfanumérico (0-9, a-z, A-Z)
         final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 

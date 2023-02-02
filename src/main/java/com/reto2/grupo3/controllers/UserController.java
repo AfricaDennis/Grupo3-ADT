@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @RestController
@@ -56,32 +57,38 @@ public class UserController {
     }
 
     /* ACTUALIZAR CONTRASEÑA ALEATORIA ENVIAR GMAIL*/
+//    @PutMapping("/auth/enviarEmail/{email}")
+//    public ResponseEntity<String> updateUsuarioEmail(@PathVariable("email") String email) {
+//        User usuarioAlreadyExists = userRepository.findByEmail(email);
+//
+//
+//        String user = "team3reto3@gmail.com";
+//        String pass = "bwsgfyfxceljcinf";
+//        EnviarCorreo enviarCorreo = new EnviarCorreo(user, pass);
+//
+//        if (usuarioAlreadyExists != null) {
+//
+//            String randomPass = enviarCorreo.generateRandomPassword(5);
+//
+//            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//            String randomPassEncoded = passwordEncoder.encode(randomPass);
+//
+//            usuarioAlreadyExists.setPassword(randomPassEncoded);
+//            usuarioAlreadyExists = userRepository.save(usuarioAlreadyExists);
+//
+//            enviarCorreo.enviarCorreoReset(email, randomPass);
+//            //enviarCorreo.enviarCorreoReset(randomPass, email);
+//
+//            return ResponseEntity.ok().body(randomPass);
+//        } else {
+//            User usuario = null;
+//            return ResponseEntity.ok().body("mal");
+//        }
+//    }
+
     @PutMapping("/auth/enviarEmail/{email}")
-    public ResponseEntity<String> updateUsuarioEmail(@PathVariable("email") String email) {
-        User usuarioAlreadyExists = userRepository.findByEmail(email);
-
-
-        String user = "team3reto3@gmail.com";
-        String pass = "bwsgfyfxceljcinf";
-        EnviarCorreo enviarCorreo = new EnviarCorreo(user, pass);
-
-        if (usuarioAlreadyExists != null) {
-
-            String randomPass = enviarCorreo.generateRandomPassword(5);
-
-            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            String randomPassEncoded = passwordEncoder.encode(randomPass);
-
-            usuarioAlreadyExists.setPassword(randomPassEncoded);
-            usuarioAlreadyExists = userRepository.save(usuarioAlreadyExists);
-
-            enviarCorreo.enviarCorreoReset(email, randomPass);
-            //enviarCorreo.enviarCorreoReset(randomPass, email);
-
-            return ResponseEntity.ok().body(randomPass);
-        } else {
-            User usuario = null;
-            return ResponseEntity.ok().body("mal");
-        }
+    public ResponseEntity<UserServiceModel> updateUsuarioEmail(@PathVariable("email") String email) {
+        return new ResponseEntity<>(userService.enviarEmail(email), HttpStatus.OK);
     }
+
 }
