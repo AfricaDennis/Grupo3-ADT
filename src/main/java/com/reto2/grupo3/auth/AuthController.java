@@ -100,7 +100,7 @@ public class AuthController {
             User user = (User) authentication.getPrincipal();
             AuthResponse response = new AuthResponse(user.getId(), user.getEmail());
 
-            return new ResponseEntity<>(userService.updateUser(response.getId(),userPostRequest), HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(userService.updateUserPass(response.getId(),userPostRequest), HttpStatus.NO_CONTENT);
 
         } catch (BadCredentialsException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
