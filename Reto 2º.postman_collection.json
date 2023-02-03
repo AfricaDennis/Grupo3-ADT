@@ -1,0 +1,897 @@
+{
+	"info": {
+		"_postman_id": "6b8a8ee0-78c2-4ca1-a1b3-e258829fda93",
+		"name": "Reto 2º",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Favorites",
+			"item": [
+				{
+					"name": "GET favorites",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLGFmcmljYUB5YWhvby5jb20iLCJpc3MiOiJBRFREQU0iLCJpYXQiOjE2Njc4MzYxMjAsImV4cCI6MTY2NzkyMjUyMH0.hzqkOigI3VYK-atdjHc_yjrZyBUkhVo9JyqP--sp4ep73Tn3TzOgIGurejmHIsqDJ1Eu_Hyqlbj5bjIf4d2hWg",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{API_URI}}/favorites",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET favorites{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/favorites/1",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"favorites",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE favorites",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Rodrigo3\",\r\n    \"surname\": \"Armoa3 Fernandez3\",\r\n    \"password\": \"hola\",\r\n    \"email\": \"rodrigo@gmail.com\",\r\n    \"phone\": \"688757110\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/users",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE favorites",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"teacher\": null,\r\n    \"id_teacher\": \"3\",\r\n    \"student\": null,\r\n    \"id_student\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/favorites/3",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"favorites",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Favorites{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/favorites/6",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"favorites",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Topics",
+			"item": [
+				{
+					"name": "GET topic",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLGFmcmljYUB5YWhvby5jb20iLCJpc3MiOiJBRFREQU0iLCJpYXQiOjE2Njc4MzYxMjAsImV4cCI6MTY2NzkyMjUyMH0.hzqkOigI3VYK-atdjHc_yjrZyBUkhVo9JyqP--sp4ep73Tn3TzOgIGurejmHIsqDJ1Eu_Hyqlbj5bjIf4d2hWg",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{API_URI}}/topics",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET topics{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/topics/4",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"topics",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE topics",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\" : \"Programación con Pyton\",\r\n   \"id_teacher\" : 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/topics",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE topics",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\" : \"Programación con C#\",\r\n   \"id_teacher\" : 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/topics/4",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"topics",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE topics{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/topics/4",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"topics",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teachers",
+			"item": [
+				{
+					"name": "GET Teachers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/teachers",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Teacher{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/teachers/12",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"teachers",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Teacher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ibai\",\r\n    \"surname\": \"Arroyo\",\r\n    \"password\": 1234,\r\n    \"email\": \"Arroyo@gmail.com\",\r\n    \"phone\": \"652312736\",\r\n    \"location\": \"Portugalete\",\r\n    \"shift\": \"Tarde\",\r\n    \"photo\": \"Ninguna\",\r\n    \"description\": \"Soy un profesor Basico\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/teachers",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"teachers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Teacher{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ibai\",\r\n    \"surname\": \"Arrollo\",\r\n    \"password\": 1234,\r\n    \"email\": \"Arroyo@gmail.com\",\r\n    \"phone\": \"652312736\",\r\n    \"location\": \"Portugallete\",\r\n    \"shift\": \"Tarde\",\r\n    \"photo\": \"Si tengoo\",\r\n    \"description\": \"Soy un profesor Si soy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/teachers/12",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"teachers",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Teacher{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/teachers/12",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"teachers",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "GET Students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/students",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Student{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/students/4",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"students",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Richard\",\r\n    \"surname\": \"Oswaldo\",\r\n    \"password\": 1234,\r\n    \"email\": \"Oswaldo@gmail.com\",\r\n    \"phone\": \"652311736\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/students",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Student{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Iraia\",\r\n    \"surname\": \"Iza\",\r\n    \"password\": 12345,\r\n    \"email\": \"Iza@gmail.com\",\r\n    \"phone\": \"652311736\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/students/4",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"students",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Student{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/teachers/7",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"teachers",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "GET users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{API_URI}}/users",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET users{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/users/2",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/users",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE users{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/users/4",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"users",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/auth/login",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"africa@hotmail.com\",\r\n    \"password\": \"bustillo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/auth/signup",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserInfo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLGFmcmljYUB5YWhvby5jb20iLCJpc3MiOiJBRFREQU0iLCJpYXQiOjE2NjU0OTczOTEsImV4cCI6MTY2NTU4Mzc5MX0.BGmUlxEV0-NNzW9eQ_2Cme787OWX9PRv5_Vc5rH1cefMescy0AYcPzL2O-5jDZeJ4oSbXLjNnviOQPmZqJ8riQ",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{API_URI}}/auth/me",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE users{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/users/20",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"users",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{API_URI}}/auth/enviarEmail/{email}",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"auth",
+								"enviarEmail",
+								"{email}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"AfricaDennis@gmail.com\",\r\n    \"password\": \"contraseña\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/auth/cambiopass/{email}/{password}",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"auth",
+								"cambiopass",
+								"{email}",
+								"{password}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Opinions",
+			"item": [
+				{
+					"name": "GET Opinions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLGFmcmljYUB5YWhvby5jb20iLCJpc3MiOiJBRFREQU0iLCJpYXQiOjE2NjY3OTAxNTMsImV4cCI6MTY2Njg3NjU1M30.zXHKJADjPNrRwNeyWqPPSlUjFbTgB7DTFbKjagLw_e5JN0wFFZoEogF15rhrzjSlx3kpoMAWRDsLYD3acNzccA",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{API_URI}}/opinions",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"opinions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Opinions{id}",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLGFmcmljYUB5YWhvby5jb20iLCJpc3MiOiJBRFREQU0iLCJpYXQiOjE2NjY3OTAxNTMsImV4cCI6MTY2Njg3NjU1M30.zXHKJADjPNrRwNeyWqPPSlUjFbTgB7DTFbKjagLw_e5JN0wFFZoEogF15rhrzjSlx3kpoMAWRDsLYD3acNzccA",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{API_URI}}/opinions/1",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"opinions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Opinions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLGFmcmljYUB5YWhvby5jb20iLCJpc3MiOiJBRFREQU0iLCJpYXQiOjE2NjY3OTAxNTMsImV4cCI6MTY2Njg3NjU1M30.zXHKJADjPNrRwNeyWqPPSlUjFbTgB7DTFbKjagLw_e5JN0wFFZoEogF15rhrzjSlx3kpoMAWRDsLYD3acNzccA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"saleDate\": \"2022-10-01\",\r\n    \"amount\": 40000,\r\n    \"employeeId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/opinions",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"opinions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Opinions{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLGFmcmljYUB5YWhvby5jb20iLCJpc3MiOiJBRFREQU0iLCJpYXQiOjE2NjY3OTAxNTMsImV4cCI6MTY2Njg3NjU1M30.zXHKJADjPNrRwNeyWqPPSlUjFbTgB7DTFbKjagLw_e5JN0wFFZoEogF15rhrzjSlx3kpoMAWRDsLYD3acNzccA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"saleDate\": \"2022-10-01\",\r\n    \"amount\": 49000,\r\n    \"employeeId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/opinions/1",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"opinions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Opinions{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxLGFmcmljYUB5YWhvby5jb20iLCJpc3MiOiJBRFREQU0iLCJpYXQiOjE2NjY3OTAxNTMsImV4cCI6MTY2Njg3NjU1M30.zXHKJADjPNrRwNeyWqPPSlUjFbTgB7DTFbKjagLw_e5JN0wFFZoEogF15rhrzjSlx3kpoMAWRDsLYD3acNzccA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"saleDate\": \"2022-10-01\",\r\n    \"amount\": 40000,\r\n    \"employeeId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URI}}/opinions/1",
+							"host": [
+								"{{API_URI}}"
+							],
+							"path": [
+								"opinions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URI",
+			"value": "http://localhost:8080/api",
+			"type": "default"
+		}
+	]
+}
