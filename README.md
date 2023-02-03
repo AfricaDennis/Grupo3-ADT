@@ -2,6 +2,8 @@
 
 EL SERVER SE ENCUENTRA EN LA RAMA: "enviar_email".
 
+ACCEDER A "aplication.propierties" y descomentar "#spring.jpa.hibernate.ddl-auto=update" para obtener nuestra BBDD
+
 ## Seguridad
 La seguridad es un aspecto fundamental de nuestro servidor, por lo que hemos implementado diversas medidas para garantizar la privacidad y protección de los datos de los usuarios. A continuación se describen las funcionalidades relacionadas con la seguridad:
 
