@@ -45,3 +45,4 @@ El servidor ofrece una amplia gama de servicios, que incluyen funciones de segur
 Nuestro enfoque en la implementación de operaciones CRUD en todos los servicios ha permitido asegurar una experiencia de usuario intuitiva y eficiente. Ya sea que desee crear una nueva entidad, leer detalles sobre una existente, actualizar información o eliminar un registro, todo está disponible con unos pocos clics.
 
 Esta medida permite un control total y una gestión eficiente de todas las entidades y servicios, lo que se traduce en una experiencia de usuario satisfactoria y un rendimiento óptimo. Gracias a esta característica, podemos ofrecer una solución de servidor completa y flexible a nuestros clientes.
+º
