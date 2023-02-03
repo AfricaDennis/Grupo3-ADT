@@ -31,22 +31,22 @@ public class UserController {
         return new ResponseEntity<>(userService.getALl(), HttpStatus.OK);
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<UserServiceModel> getUserById(@PathVariable("id") Integer id){
         return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/user", consumes = {"application/json"})
+    @PostMapping(value = "/users", consumes = {"application/json"})
     public ResponseEntity<UserServiceModel> createUser(@RequestBody UserPostRequest userPostRequest){
         return new ResponseEntity<>(userService.createUser(userPostRequest), HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/users/{id}")
     public ResponseEntity<UserServiceModel> updateUserById(@PathVariable("id") Integer id, @RequestBody UserPostRequest userPostRequest){
         return new ResponseEntity<>(userService.updateUser(id,userPostRequest), HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("user/{id}")
+    @DeleteMapping("users/{id}")
     public ResponseEntity<?> deleteUserById(@PathVariable("id") Integer id){
         try {
             userService.deleteUserById(id);
@@ -56,35 +56,7 @@ public class UserController {
         }
     }
 
-    /* ACTUALIZAR CONTRASEÑA ALEATORIA ENVIAR GMAIL*/
-//    @PutMapping("/auth/enviarEmail/{email}")
-//    public ResponseEntity<String> updateUsuarioEmail(@PathVariable("email") String email) {
-//        User usuarioAlreadyExists = userRepository.findByEmail(email);
-//
-//
-//        String user = "team3reto3@gmail.com";
-//        String pass = "bwsgfyfxceljcinf";
-//        EnviarCorreo enviarCorreo = new EnviarCorreo(user, pass);
-//
-//        if (usuarioAlreadyExists != null) {
-//
-//            String randomPass = enviarCorreo.generateRandomPassword(5);
-//
-//            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//            String randomPassEncoded = passwordEncoder.encode(randomPass);
-//
-//            usuarioAlreadyExists.setPassword(randomPassEncoded);
-//            usuarioAlreadyExists = userRepository.save(usuarioAlreadyExists);
-//
-//            enviarCorreo.enviarCorreoReset(email, randomPass);
-//            //enviarCorreo.enviarCorreoReset(randomPass, email);
-//
-//            return ResponseEntity.ok().body(randomPass);
-//        } else {
-//            User usuario = null;
-//            return ResponseEntity.ok().body("mal");
-//        }
-//    }
+
 
     @PutMapping("/auth/enviarEmail/{email}")
     public ResponseEntity<UserServiceModel> updateUsuarioEmail(@PathVariable("email") String email) {

@@ -118,7 +118,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         UserServiceModel response = new UserServiceModel(
                 queryUser.getName(),
                 queryUser.getSurname(),
-                queryUser.getPassword(),
+//                queryUser.getPassword(),
                 queryUser.getEmail(),
                 queryUser.getPhone()
         );
