@@ -1,5 +1,7 @@
 # Server Readme
 
+EL SERVER SE ENCUENTRA EN LA RAMA: "enviar_email".
+
 ## Seguridad
 La seguridad es un aspecto fundamental de nuestro servidor, por lo que hemos implementado diversas medidas para garantizar la privacidad y protección de los datos de los usuarios. A continuación se describen las funcionalidades relacionadas con la seguridad:
 
@@ -24,8 +26,12 @@ Tanto los usuarios como los administradores pueden actualizar los datos de los u
 ### Borrado de usuario
 Tanto los usuarios como los administradores pueden borrar las cuentas de los usuarios en el sistema, lo que les permite administrar las cuentas de los usuarios de manera eficiente.
 
-### CRUD de roles
-Tanto los usuarios como los administradores pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) en los roles del sistema, lo que les permite administrar los roles y permisos de los usuarios de manera eficiente.
+### Validaciones en usuarios
+A la hora de crear usuarios hemos insertado validaciones las cuales son las siguientes:
+    El nombre debe tener un minimo de tres caracteres.
+    Los apellidos deben de tener minimo un espacio para obligar al usuario a insertar los dos apellidos.
+    El email esta obligado en contener minimo una "@" y un ".".
+    El telefono movil debe empezar minimo por "6" o "7" y debe contener en total 9 numeros.    
 
 # Base de datos
 La base de datos es un aspecto clave de nuestro servidor y nos esforzamos por cumplir con los más altos estándares de seguridad y protección de datos. Además, hemos completado su creación y población con datos de prueba, lo que garantiza un rendimiento óptimo y una experiencia de usuario sin problemas. Esta medida asegura una rápida implementación y una transición sin problemas hacia una utilización efectiva de nuestro servidor.
